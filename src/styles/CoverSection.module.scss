@@ -1,0 +1,61 @@
+.container{
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.coverSection{
+    position: relative;
+    width: 100%;
+
+    h1{
+        font-family: 'Libre Bodoni', serif;
+        font-size: 2.5rem;
+        letter-spacing: 0.01em;
+        line-height: 3rem;
+    }
+    
+    p{
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 1.125rem;
+    }
+
+    .coverPanel1{
+        position: relative;
+        width: 100%;
+
+        img{
+            width: 55%;
+            height: auto;
+        }
+
+        .coverText{
+            position: absolute;
+            top: 10%;
+            left: 51%;
+        }
+    }
+
+    .coverPanel2{
+        width: 47%;
+        position: absolute;
+        right: 0;
+        top: 45%;
+
+        img{
+            width: 100%;
+            height: auto;
+        }
+
+        .coverText{
+            position: absolute;
+            top: 83%;
+            left: 5%;
+            color: #fff;
+        }
+    }
+
+    .carousel{
+        position: absolute;
+    }
+}

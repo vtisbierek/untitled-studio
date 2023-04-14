@@ -1,0 +1,46 @@
+.titleSection{
+  width: 100%;
+  max-width: 1440px;
+  padding: 10rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  span{
+    font-size: 2.815rem;
+  }
+
+  div{
+    margin: 1rem 0;
+  }
+
+  a{
+    margin: 0 2.125rem;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Libre Bodoni', serif;
+    font-size: 2.815rem;
+    padding: 0 5px;
+    background-image: linear-gradient(45deg,
+          transparent 0%,
+          transparent 50%,
+          #FDF050 50%,
+          #FDF050 100%);
+      background-size: 300%;
+      transition: background-position .3s cubic-bezier(.47, .1, 1, .63),
+        color .2s linear;
+      transition-delay: 0.05s, 0.5s;
+
+    &:hover{
+      background-position: -50% 100%;
+    }
+
+    span{
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.125rem;
+    }
+  }
+}
+
