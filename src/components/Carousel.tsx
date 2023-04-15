@@ -17,6 +17,7 @@ export default function Carousel(){
         autoplay: true,
         vertical: true,
         //adaptiveHeight: true,
+        //variableWidth: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
