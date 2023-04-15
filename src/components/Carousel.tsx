@@ -16,7 +16,7 @@ export default function Carousel(){
     const settings = {
         autoplay: true,
         vertical: true,
-        adaptiveHeight: true,
+        //adaptiveHeight: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -24,19 +24,49 @@ export default function Carousel(){
     };
 
     return (
-        <div className={styles.carousel}>
-            <Slider ref={slider} {...settings}>
+        <div className={styles.carouselPanel}>
+            <Slider ref={slider} {...settings} className={styles.carousel}>
                 <div className={styles.slide}>
                     <Image src={logo1} alt="logo 1"/>
                     <div className={styles.slideCaption}>
-
+                        <h1>
+                            AMIABLE -
+                        </h1>
+                        <h1>
+                            Logo Brand
+                        </h1>
+                        <p>
+                            사기 로고 브랜드 제작
+                        </p>
                     </div>
                 </div>
-                <div>
+                <div className={styles.slide}>
                     <Image src={logo2} alt="logo 2"/>
+                    <div className={styles.slideCaption}>
+                        <h1>
+                            AMIABLE 2 -
+                        </h1>
+                        <h1>
+                            Logo Brand
+                        </h1>
+                        <p>
+                            사기 로고 브랜드 제작
+                        </p>
+                    </div>
                 </div>
-                <div>
+                <div className={styles.slide}>
                     <Image src={logo3} alt="logo 3"/>
+                    <div className={styles.slideCaption}>
+                        <h1>
+                            AMIABLE 3 -
+                        </h1>
+                        <h1>
+                            Logo Brand
+                        </h1>
+                        <p>
+                            사기 로고 브랜드 제작
+                        </p>
+                    </div>
                 </div>
             </Slider>
             <button onClick={() => slider?.current?.slickPrev()} className={styles.prevButton}>
@@ -45,9 +75,6 @@ export default function Carousel(){
             <button onClick={() => slider?.current?.slickNext()} className={styles.nextButton}>
                 <IoIosArrowDown />
             </button>
-{/*             <div className={styles.infoPanel}>
-
-            </div> */}
         </div>
     );
 }
