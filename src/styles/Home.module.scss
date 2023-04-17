@@ -44,3 +44,24 @@
   }
 }
 
+.portfolioSection{
+  max-width: 1440px;
+  width: 100%;
+  margin: 12rem auto;
+
+  .portfolioTitle{
+    margin-left: 4rem;
+    margin-bottom: 4rem;
+
+    h1{
+      font-family: 'Libre Bodoni', serif;
+      font-size: 2.5rem;
+    }
+
+    p{
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1rem;
+    }
+  }
+
+}
