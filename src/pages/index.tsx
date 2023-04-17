@@ -120,8 +120,10 @@ export default function Home() {
         <CoverSection />
         <section className={styles.portfolioSection}>
           <div className={styles.portfolioTitle}>
-            <h1>PORTFOLIO</h1>
-            <p>포트폴리오</p>
+            <Link href="/portfolio">
+              <h1>PORTFOLIO</h1>
+              <p>포트폴리오</p>
+            </Link>
           </div>
           <Gallery pictures={pictures}/>
         </section>

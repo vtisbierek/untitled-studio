@@ -1,6 +1,5 @@
-import styles from "../styles/Gallery.module.scss";
 import Row from "./Row";
-import Image, { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 import usLogo from "../../public/images/us-logo.jpg";
 
 type Picture = {
