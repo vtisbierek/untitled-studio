@@ -4,7 +4,7 @@
 
     .emailTitle{
         max-width: 1440px;
-        margin: 0 auto 1rem;
+        margin: 0 auto 2.5rem;
 
         div{
             margin-left: 4rem;
@@ -12,7 +12,7 @@
 
         h1{
             font-family: 'Libre Bodoni', serif;
-            font-size: 2.5rem;
+            font-size: 3.125rem;
         }
 
         p{
@@ -21,70 +21,144 @@
         }
     }
 
-    .left{
-        width: 50%;
-        background-color: #f6f6f6;
-        border-top-right-radius: 32px;
-        border-bottom-right-radius: 32px;
+    .splitPanel{
+        display: flex;
 
-        div{
-            padding: 3rem 0;
-            margin: 0 6rem 0 auto;
-            max-width: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: right;
-
-            form{
-                width: 70%;
+        .left{
+            width: 50%;
+            background-color: #f6f6f6;
+            border-top-right-radius: 32px;
+            border-bottom-right-radius: 32px;
+    
+            div{
+                padding: 7rem 0;
+                margin: 0 6rem 0 auto;
+                max-width: 600px;
                 display: flex;
-                flex-direction: column;
-                font-family: 'Noto Sans', sans-serif;
-                font-size: 1rem;
-                line-height: 1.5rem;
-
-                label{
-                    color: #77808B;
-                    margin-bottom: 5px;
-                }
-
-                label ~ label{
-                    margin-top: 15px;
-                }
-
-                .textEntry{
-                    color: #000;
+                align-items: center;
+                justify-content: right;
+    
+                form{
+                    width: 70%;
+                    display: flex;
+                    flex-direction: column;
                     font-family: 'Noto Sans', sans-serif;
                     font-size: 1rem;
                     line-height: 1.5rem;
-                    padding: 0.5rem;
-                    border: 1px solid #c4cbd3;
-                    border-radius: 6px;
-
-                    &::placeholder{
-                        color: #A2A9B0;
+    
+                    label{
+                        color: #77808B;
+                        margin-bottom: 5px;
                     }
-                }
-
-                textarea{
-                    resize: none;
-                    height: 6rem;
-                }
-
-                select{
-                    color: #A2A9B0;
-                    font-family: 'Noto Sans', sans-serif;
-                    font-size: 1rem;
-                    line-height: 1.5rem;
-                    padding: 0.5rem;
-                    border: 1px solid #c4cbd3;
-                    border-radius: 6px;
+    
+                    label ~ label{
+                        margin-top: 15px;
+                    }
+    
+                    .textEntry{
+                        color: #000;
+                        font-family: 'Noto Sans', sans-serif;
+                        font-size: 1rem;
+                        line-height: 1.5rem;
+                        padding: 0.5rem;
+                        border: 1px solid #c4cbd3;
+                        border-radius: 6px;
+    
+                        &::placeholder{
+                            color: #A2A9B0;
+                        }
+                    }
+    
+                    textarea{
+                        resize: none;
+                        height: 6rem;
+                    }
+    
+                    select{
+                        color: #A2A9B0;
+                        font-family: 'Noto Sans', sans-serif;
+                        font-size: 1rem;
+                        line-height: 1.5rem;
+                        padding: 0.5rem;
+                        border: 1px solid #c4cbd3;
+                        border-radius: 6px;
+                    }
                 }
             }
         }
-    }
+    
+        .right{
+            width: 50%;
 
-    .right{
-        width: 50%;
+            .rightContent{
+                max-width: 650px;
+                padding: 3rem;
+
+                h1{
+                    font-family: 'Libre Bodoni', serif;
+                    font-size: 3.125rem;
+                    margin-bottom: 1.5rem;
+                }
+
+                p{
+                    font-family: 'Noto Sans KR', sans-serif;
+                    font-size: 1rem;
+                    margin-bottom: 2rem;
+                }
+
+                .sendButton{
+                    cursor: pointer;
+                    background-color: #FDF050;
+                    border: none;
+                    border-radius: 8px;
+                    padding: 0.8rem 2.8rem;
+                    font-family: 'Noto Sans', sans-serif;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    margin-bottom: 3.5rem;
+                }
+
+                .socialButtons{
+                    display: flex;
+                    justify-content: space-between;
+                    padding-left: 12rem;
+
+                    span{
+                        font-family: 'Noto Sans', sans-serif;
+                        font-size: 1rem;
+                    }
+
+                    button{
+                        cursor: pointer;
+                        border: none;
+                        background-color: transparent;
+                    }
+
+                    .socialSet{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+
+                        .whatsappButton{
+                            color: #2CB742;
+                            font-size: 4.5rem;
+                        }
+
+                        .kakaoButton{
+                            color: #FAE100;
+                            font-size: 4.5rem;
+                        }
+
+                        .emailButton{
+                            color: #033A88;
+                            font-size: 4.5rem;
+                        }
+                    }
+                }
+
+            }
+
+        }
     }
 }

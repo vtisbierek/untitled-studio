@@ -49,7 +49,7 @@ export default function Home() {
         <section className={styles.portfolioSection}>
           <div className={styles.portfolioTitle}>
             <Link href="/portfolio">
-              <h1>PORTFOLIO</h1>
+              <h1>Portfolio</h1>
               <p>포트폴리오</p>
             </Link>
           </div>
