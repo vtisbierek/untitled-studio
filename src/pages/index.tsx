@@ -5,6 +5,7 @@ import Link from 'next/link';
 import CoverSection from '@/components/CoverSection';
 import Gallery from '@/components/Gallery';
 import Image from 'next/image';
+import EmailPanel from '@/components/EmailPanel';
 import { pictures } from '../../pictures';
 import clients from "../../public/images/Group 89.png";
 
@@ -40,7 +41,7 @@ export default function Home() {
             </Link>
             <span>/</span>
             <Link href="/portfolio">
-              UX & UI <span className={styles.titleKr}>웹 UI & UX</span>
+              UI & UX <span className={styles.titleKr}>웹 UI & UX</span>
             </Link>
           </div>
         </section>
@@ -70,6 +71,9 @@ export default function Home() {
           <div className={styles.clientBanner}>
             <Image src={clients} alt="clients logos" />
           </div>
+        </section>
+        <section>
+          <EmailPanel />
         </section>
       </main>
     </>
