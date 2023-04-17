@@ -1,85 +1,10 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '@/styles/Home.module.scss';
 import Header from '@/components/Header';
 import Link from 'next/link';
 import CoverSection from '@/components/CoverSection';
 import Gallery from '@/components/Gallery';
-import propImg from "../../public/images/Rectangle 10.png";
-
-const pictures = [{
-    url: propImg,
-    alt: "prop img",
-    descriptionEng: "WELLABLE 1",
-    descriptionKor: "웰에이블 명함 & 인쇄",
-    tags: [
-        "#Business card",
-        "#Printing"
-    ]
-}, {
-    url: propImg,
-    alt: "prop img",
-    descriptionEng: "WELLABLE 2",
-    descriptionKor: "웰에이블 명함 & 인쇄",
-    tags: [
-        "#Business card",
-        "#Printing"
-    ]
-}, {
-  url: propImg,
-  alt: "prop img",
-  descriptionEng: "WELLABLE 3",
-  descriptionKor: "웰에이블 명함 & 인쇄",
-  tags: [
-      "#Business card",
-      "#Printing"
-  ]
-}, {
-  url: propImg,
-  alt: "prop img",
-  descriptionEng: "WELLABLE 4",
-  descriptionKor: "웰에이블 명함 & 인쇄",
-  tags: [
-      "#Business card",
-      "#Printing"
-  ]
-}, {
-  url: propImg,
-  alt: "prop img",
-  descriptionEng: "WELLABLE 5",
-  descriptionKor: "웰에이블 명함 & 인쇄",
-  tags: [
-      "#Business card",
-      "#Printing"
-  ]
-}, {
-  url: propImg,
-  alt: "prop img",
-  descriptionEng: "WELLABLE 5",
-  descriptionKor: "웰에이블 명함 & 인쇄",
-  tags: [
-      "#Business card",
-      "#Printing"
-  ]
-}, {
-  url: propImg,
-  alt: "prop img",
-  descriptionEng: "WELLABLE 5",
-  descriptionKor: "웰에이블 명함 & 인쇄",
-  tags: [
-      "#Business card",
-      "#Printing"
-  ]
-}, {
-    url: propImg,
-    alt: "prop img",
-    descriptionEng: "WELLABLE 6",
-    descriptionKor: "웰에이블 명함 & 인쇄",
-    tags: [
-        "#Business card",
-        "#Printing"
-    ]
-}]
+import { pictures } from '../../pictures';
 
 export default function Home() {
   return (
