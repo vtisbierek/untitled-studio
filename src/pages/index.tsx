@@ -4,7 +4,9 @@ import Header from '@/components/Header';
 import Link from 'next/link';
 import CoverSection from '@/components/CoverSection';
 import Gallery from '@/components/Gallery';
+import Image from 'next/image';
 import { pictures } from '../../pictures';
+import clients from "../../public/images/Group 89.png";
 
 export default function Home() {
   return (
@@ -51,8 +53,24 @@ export default function Home() {
             </Link>
           </div>
           <Gallery pictures={pictures}/>
+          <div className={styles.seeMore}>
+            <button>
+              <h1>VIEW MORE</h1>
+              <p>더보기</p>
+            </button>
+          </div>
         </section>
-        
+        <section className={styles.clientSection}>
+          <div className={styles.clientTitle}>
+            <div>
+              <h1>Our Clients</h1>
+              <p>우리의 고객사들</p>
+            </div>
+          </div>
+          <div className={styles.clientBanner}>
+            <Image src={clients} alt="clients logos" />
+          </div>
+        </section>
       </main>
     </>
   )
