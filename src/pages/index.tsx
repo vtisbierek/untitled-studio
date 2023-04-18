@@ -6,6 +6,7 @@ import CoverSection from '@/components/CoverSection';
 import Gallery from '@/components/Gallery';
 import Image from 'next/image';
 import EmailPanel from '@/components/EmailPanel';
+import Footer from '@/components/Footer';
 import { pictures } from '../../pictures';
 import clients from "../../public/images/Group 89.png";
 
@@ -74,6 +75,9 @@ export default function Home() {
         </section>
         <section>
           <EmailPanel />
+        </section>
+        <section>
+          <Footer />
         </section>
       </main>
     </>
