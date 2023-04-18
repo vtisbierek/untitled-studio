@@ -19,8 +19,8 @@ export default function Row({pictures, modal}: RowProps){
     return (
         <div className={styles.container}>
             {pictures.map(picture => (
-                <div className={styles.pictureBox}>
-                    <button onClick={() => modal(true)}>
+                <button onClick={() => modal(true)} className={styles.modalButton}>
+                    <div className={styles.pictureBox}>
                         <Image src={picture.url} alt={picture.alt}/>
                         <div className={styles.pictureText}>
                             <div className={styles.pictureCaption}>
@@ -29,8 +29,8 @@ export default function Row({pictures, modal}: RowProps){
                             </div>
                             <p className={styles.tags}>{picture.tags.map(tag => `${tag} `)}</p>
                         </div>
-                    </button>
-                </div>
+                    </div>
+                </button>
             ))}
         </div>
     );
