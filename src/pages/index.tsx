@@ -7,7 +7,7 @@ import Gallery from '@/components/Gallery';
 import Image from 'next/image';
 import EmailPanel from '@/components/EmailPanel';
 import Footer from '@/components/Footer';
-import Modal from '@/components/Modal';
+import Modal, {RenderModalBackdropProps} from "react-overlays/Modal";
 import {useState} from "react";
 import { pictures } from '../../pictures'; //vai sair depois, pois as imagens vão vir do CMS
 import clients from "../../public/images/Group 89.png"; //também vai sair, pois vai vir do CMS
@@ -19,8 +19,7 @@ export default function Home() {
     setShowModal(modalState);
   }
 
-  console.log(showModal);
-  
+  const renderBackdrop = (props: RenderModalBackdropProps) => <div className={styles.backdrop} {...props} />;
 
   return (
     <>
@@ -28,6 +27,16 @@ export default function Home() {
         <title>Untitled Studio</title>
       </Head>
       <main className={styles.main}>
+        <Modal
+          className={styles.modal}
+          show={showModal}
+          onHide={() => setShowModal(false)}
+          renderBackdrop={renderBackdrop}
+        >
+          <div className={styles.porco}>
+            hehehe
+          </div>
+        </Modal>
         <Header />
         <section className={styles.titleSection}>
           <div>
@@ -90,9 +99,6 @@ export default function Home() {
         <section>
           <Footer />
         </section>
-        <Modal show={showModal} onClose={() => setShowModal(false)}>
-          Lalalala
-        </Modal>
       </main>
     </>
   )
