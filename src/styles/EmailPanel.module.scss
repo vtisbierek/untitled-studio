@@ -132,6 +132,7 @@
                         cursor: pointer;
                         border: none;
                         background-color: transparent;
+                        margin-bottom: 0.6rem;
                     }
 
                     .socialSet{
@@ -140,19 +141,9 @@
                         align-items: center;
                         justify-content: center;
 
-                        .whatsappButton{
-                            color: #2CB742;
-                            font-size: 4.5rem;
-                        }
-
-                        .kakaoButton{
-                            color: #FAE100;
-                            font-size: 4.5rem;
-                        }
-
-                        .emailButton{
-                            color: #033A88;
-                            font-size: 4.5rem;
+                        img{
+                            max-width: 4rem;
+                            height: auto;
                         }
                     }
                 }

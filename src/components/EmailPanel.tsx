@@ -1,6 +1,8 @@
 import styles from "../styles/EmailPanel.module.scss";
-import {RiKakaoTalkFill, RiWhatsappFill, RiMailFill} from "react-icons/ri";
-import {IoMdMail} from "react-icons/io";
+import emailIcon from "../../public/images/email-icon.png";
+import kakaoIcon from "../../public/images/kakao-icon.png";
+import whatsappIcon from "../../public/images/whatsapp-icon.png";
+import Image from "next/image";
 
 export default function EmailPanel(){
     return (
@@ -41,21 +43,21 @@ export default function EmailPanel(){
                         <div className={styles.socialButtons}>
                             <div className={styles.socialSet}>
                                 <button className={styles.emailButton}>
-                                    <IoMdMail />
+                                    <Image src={emailIcon} alt="email icon" />
                                 </button>
                                 <span>이메일</span>
                                 <span>E-MAIL</span>
                             </div>
                             <div className={styles.socialSet}>
                                 <button className={styles.kakaoButton}>
-                                    <RiKakaoTalkFill />
+                                    <Image src={kakaoIcon} alt="kakao talk icon" />
                                 </button>
                                 <span>카카오채널</span>
                                 <span>KAKAO CHANNEL</span>
                             </div>
                             <div className={styles.socialSet}>
                                 <button className={styles.whatsappButton}>
-                                    <RiWhatsappFill />
+                                    <Image src={whatsappIcon} alt="whatsapp icon" />
                                 </button>
                                 <span>왓츠앱</span>
                                 <span>WHATSAPP</span>
