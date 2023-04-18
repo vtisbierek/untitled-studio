@@ -1,8 +1,4 @@
 import styles from "../styles/Carousel.module.scss";
-import Image from "next/image";
-import logo1 from "../../public/images/logo01.jpg";
-import logo2 from "../../public/images/logo02.jpg";
-import logo3 from "../../public/images/logo03.jpg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -38,48 +34,22 @@ export default function Carousel({carouselData}: CarouselProps){
     return (
         <div className={styles.carouselPanel}>
             <Slider ref={slider} {...settings} className={styles.carousel}>
-                <div className={styles.slide}>
-                    <Image src={logo1} alt="logo 1"/>
-                    <div className={styles.slideCaption}>
-                        <h1>
-                            {carouselData[0].title}
-                        </h1>
-                        <h1>
-                            Logo Brand
-                        </h1>
-                        <p>
-                            사기 로고 브랜드 제작
-                        </p>
+                {carouselData.map(slide => (
+                    <div className={styles.slide}>
+                        <img src={slide.image} alt={slide.title}/>
+                        <div className={styles.slideCaption}>
+                            <h1>
+                                {slide.title}
+                            </h1>
+                            <h1>
+                                {slide.description}
+                            </h1>
+                            <p>
+                                {slide.descriptionKR}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div className={styles.slide}>
-                    <Image src={logo2} alt="logo 2"/>
-                    <div className={styles.slideCaption}>
-                        <h1>
-                            AMIABLE 2 -
-                        </h1>
-                        <h1>
-                            Logo Brand
-                        </h1>
-                        <p>
-                            사기 로고 브랜드 제작
-                        </p>
-                    </div>
-                </div>
-                <div className={styles.slide}>
-                    <Image src={logo3} alt="logo 3"/>
-                    <div className={styles.slideCaption}>
-                        <h1>
-                            AMIABLE 3 -
-                        </h1>
-                        <h1>
-                            Logo Brand
-                        </h1>
-                        <p>
-                            사기 로고 브랜드 제작
-                        </p>
-                    </div>
-                </div>
+                ))} 
             </Slider>
             <button onClick={() => slider?.current?.slickPrev()} className={styles.prevButton}>
                 <IoIosArrowUp />

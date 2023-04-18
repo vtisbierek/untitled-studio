@@ -4,7 +4,6 @@ import Header from '@/components/Header';
 import Link from 'next/link';
 import CoverSection from '@/components/CoverSection';
 import Gallery from '@/components/Gallery';
-import Image from 'next/image';
 import EmailPanel from '@/components/EmailPanel';
 import Footer from '@/components/Footer';
 import Modal, {RenderModalBackdropProps} from "react-overlays/Modal";
@@ -14,7 +13,6 @@ import { GetStaticProps } from 'next';
 import {client} from "../services/prismic";
 import * as prismicH from '@prismicio/helpers';
 import { pictures, details } from '../../pictures'; //vai sair depois, pois as imagens vão vir do CMS
-import clients from "../../public/images/Group 89.png"; //também vai sair, pois vai vir do CMS
 
 type Content = {
   coverSection: {
@@ -120,7 +118,7 @@ export default function Home({content}: ContentProps) {
             </div>
           </div>
           <div className={styles.clientBanner}>
-            <Image src={clients} alt="clients logos" />
+            <img src={content.ourClientsImg} alt="clients logos" />
           </div>
         </section>
         <section>
