@@ -132,15 +132,23 @@
 }
 
 .modal {
+  max-height: 90vh;
+  overflow-y: auto;
   position: fixed;
-  width: 400px;
+  max-width: 1440px;
   z-index: 1040;
-  top: 40%;
-  left: 40%;
+  top: 10%;
+  left: calc(((100vw - 1440px)/2) - 10px);
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  -ms-overflow-style: none;  /* escondendo a scrollbar no IE e Edge */
+  scrollbar-width: none;  /* escondendo a scrollbar no Firefox */
+}
+
+.modal::-webkit-scrollbar{
+  display: none; /* escondendo a scrollbar no Chrome, Safari e Opera */
 }
 
 .backdrop {
@@ -151,7 +159,7 @@
   left: 0;
   right: 0;
   background-color: #000;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .porco{

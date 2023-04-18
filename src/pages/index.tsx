@@ -9,7 +9,8 @@ import EmailPanel from '@/components/EmailPanel';
 import Footer from '@/components/Footer';
 import Modal, {RenderModalBackdropProps} from "react-overlays/Modal";
 import {useState} from "react";
-import { pictures } from '../../pictures'; //vai sair depois, pois as imagens vão vir do CMS
+import Detail from '@/components/Detail';
+import { pictures, details } from '../../pictures'; //vai sair depois, pois as imagens vão vir do CMS
 import clients from "../../public/images/Group 89.png"; //também vai sair, pois vai vir do CMS
 
 export default function Home() {
@@ -33,9 +34,7 @@ export default function Home() {
           onHide={() => setShowModal(false)}
           renderBackdrop={renderBackdrop}
         >
-          <div className={styles.porco}>
-            hehehe
-          </div>
+          <Detail pictures={details}/>
         </Modal>
         <Header />
         <section className={styles.titleSection}>
