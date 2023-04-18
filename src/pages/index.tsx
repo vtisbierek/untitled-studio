@@ -38,12 +38,26 @@ type Content = {
   ourClientsImg: string;
 }
 
-interface ContentProps{
-  content: Content;
+type Portfolio = {
+  postId: string;
+  thumbnail: string;
+  description: string;
+  descriptionKR: string;
+  category: string;
+  tags: string[],
+  images: string[]
 }
 
-export default function Home({content}: ContentProps) {
+interface ContentProps{
+  content: Content;
+  portfolio: Portfolio[];
+}
+
+export default function Home({content, portfolio}: ContentProps) {
   const [showModal, setShowModal] = useState(false);
+
+  console.log(portfolio);
+  
 
   function getModal(modalState: boolean){
     setShowModal(modalState);
@@ -133,7 +147,7 @@ export default function Home({content}: ContentProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await client.getSingle("home");
+  const responseHome = await client.getSingle("home");
 
   const {
     coverimgleft,
@@ -161,8 +175,8 @@ export const getStaticProps: GetStaticProps = async () => {
     carouseldescription4,
     carouseldescriptionkr4,
     ourclientsimg
-  } = response.data;
-  
+  } = responseHome.data;
+
   const content = {
     coverSection: {
       left: {
@@ -204,12 +218,44 @@ export const getStaticProps: GetStaticProps = async () => {
     ourClientsImg: prismicH.asImageSrc(ourclientsimg)
   }
 
-  console.log(content);
+  const responsePortfolio = await client.getByType("portfolio", {
+    orderings: {
+        field: 'document.last_publication_date',
+        direction: 'desc',
+    },
+    pageSize: 9,
+  });
+
+  const portfolio = responsePortfolio.results.map(item => {
+    return {
+        postId: item.id,
+        thumbnail: prismicH.asImageSrc(item.data.thumbnail),
+        description: item.data.description,
+        descriptionKR: item.data.descriptionkr,
+        category: item.data.category,
+        tags: [
+          item.data.tag1,
+          item.data.tag2,
+          item.data.tag3
+        ],
+        images: [
+          prismicH.asImageSrc(item.data.detailimg1),
+          prismicH.asImageSrc(item.data.detailimg2),
+          prismicH.asImageSrc(item.data.detailimg3),
+          prismicH.asImageSrc(item.data.detailimg4),
+          prismicH.asImageSrc(item.data.detailimg5),
+          prismicH.asImageSrc(item.data.detailimg6),
+          prismicH.asImageSrc(item.data.detailimg7),
+          prismicH.asImageSrc(item.data.detailimg8),
+          prismicH.asImageSrc(item.data.detailimg9),
+        ]
+    }
+  });
   
-   
   return {
     props: {
-      content
+      content,
+      portfolio
     },
     revalidate: 60 * 10, //essa página será gerada novamente a cada 10 minutos
   }

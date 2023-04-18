@@ -186,6 +186,13 @@
           "constraint": {},
           "thumbnails": []
         }
+      },
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "uid",
+          "placeholder": ""
+        }
       }
     }
   }

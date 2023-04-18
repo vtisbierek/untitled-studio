@@ -1,0 +1,139 @@
+{
+  "id": "portfolio",
+  "label": "Portfolio",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "thumbnail": {
+        "type": "Image",
+        "config": {
+          "label": "thumbnail",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "description",
+          "placeholder": ""
+        }
+      },
+      "descriptionkr": {
+        "type": "Text",
+        "config": {
+          "label": "descriptionKR",
+          "placeholder": ""
+        }
+      },
+      "category": {
+        "type": "Text",
+        "config": {
+          "label": "category",
+          "placeholder": ""
+        }
+      },
+      "tag1": {
+        "type": "Text",
+        "config": {
+          "label": "tag1",
+          "placeholder": ""
+        }
+      },
+      "tag2": {
+        "type": "Text",
+        "config": {
+          "label": "tag2",
+          "placeholder": ""
+        }
+      },
+      "tag3": {
+        "type": "Text",
+        "config": {
+          "label": "tag3",
+          "placeholder": ""
+        }
+      },
+      "detailimg1": {
+        "type": "Image",
+        "config": {
+          "label": "detailImg1",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "detailimg2": {
+        "type": "Image",
+        "config": {
+          "label": "detailImg2",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "detailimg3": {
+        "type": "Image",
+        "config": {
+          "label": "detailImg3",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "detailimg4": {
+        "type": "Image",
+        "config": {
+          "label": "detailImg4",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "detailimg5": {
+        "type": "Image",
+        "config": {
+          "label": "detailImg5",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "detailimg6": {
+        "type": "Image",
+        "config": {
+          "label": "detailImg6",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "detailimg7": {
+        "type": "Image",
+        "config": {
+          "label": "detailImg7",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "detailimg8": {
+        "type": "Image",
+        "config": {
+          "label": "detailImg8",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "detailimg9": {
+        "type": "Image",
+        "config": {
+          "label": "detailImg9",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "uid",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

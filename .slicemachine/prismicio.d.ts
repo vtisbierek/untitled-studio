@@ -293,13 +293,202 @@ interface HomeDocumentData {
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type HomeDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
-export type AllDocumentTypes = HomeDocument;
+export type HomeDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<HomeDocumentData>, "home", Lang>;
+/** Content for Portfolio documents */
+interface PortfolioDocumentData {
+    /**
+     * thumbnail field in *Portfolio*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.thumbnail
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    thumbnail: prismicT.ImageField<never>;
+    /**
+     * description field in *Portfolio*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * descriptionKR field in *Portfolio*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.descriptionkr
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    descriptionkr: prismicT.KeyTextField;
+    /**
+     * category field in *Portfolio*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.category
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    category: prismicT.KeyTextField;
+    /**
+     * tag1 field in *Portfolio*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.tag1
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    tag1: prismicT.KeyTextField;
+    /**
+     * tag2 field in *Portfolio*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.tag2
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    tag2: prismicT.KeyTextField;
+    /**
+     * tag3 field in *Portfolio*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.tag3
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    tag3: prismicT.KeyTextField;
+    /**
+     * detailImg1 field in *Portfolio*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.detailimg1
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    detailimg1: prismicT.ImageField<never>;
+    /**
+     * detailImg2 field in *Portfolio*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.detailimg2
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    detailimg2: prismicT.ImageField<never>;
+    /**
+     * detailImg3 field in *Portfolio*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.detailimg3
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    detailimg3: prismicT.ImageField<never>;
+    /**
+     * detailImg4 field in *Portfolio*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.detailimg4
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    detailimg4: prismicT.ImageField<never>;
+    /**
+     * detailImg5 field in *Portfolio*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.detailimg5
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    detailimg5: prismicT.ImageField<never>;
+    /**
+     * detailImg6 field in *Portfolio*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.detailimg6
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    detailimg6: prismicT.ImageField<never>;
+    /**
+     * detailImg7 field in *Portfolio*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.detailimg7
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    detailimg7: prismicT.ImageField<never>;
+    /**
+     * detailImg8 field in *Portfolio*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.detailimg8
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    detailimg8: prismicT.ImageField<never>;
+    /**
+     * detailImg9 field in *Portfolio*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: portfolio.detailimg9
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    detailimg9: prismicT.ImageField<never>;
+}
+/**
+ * Portfolio document from Prismic
+ *
+ * - **API ID**: `portfolio`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PortfolioDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PortfolioDocumentData>, "portfolio", Lang>;
+export type AllDocumentTypes = HomeDocument | PortfolioDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomeDocumentData, HomeDocument, AllDocumentTypes };
+        export type { HomeDocumentData, HomeDocument, PortfolioDocumentData, PortfolioDocument, AllDocumentTypes };
     }
 }

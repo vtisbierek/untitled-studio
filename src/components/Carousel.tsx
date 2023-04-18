@@ -35,7 +35,7 @@ export default function Carousel({carouselData}: CarouselProps){
         <div className={styles.carouselPanel}>
             <Slider ref={slider} {...settings} className={styles.carousel}>
                 {carouselData.map(slide => (
-                    <div className={styles.slide}>
+                    <div className={styles.slide} key={slide.title}>
                         <img src={slide.image} alt={slide.title}/>
                         <div className={styles.slideCaption}>
                             <h1>
