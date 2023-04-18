@@ -12,14 +12,17 @@ type Picture = {
 
 interface GalleryProps{
     pictures: Picture[];
+    modal: (modalState: boolean) => void;
 }
 
-export default function Gallery({pictures}: GalleryProps){
+export default function Gallery({pictures, modal}: GalleryProps){
     const rowSize = 3;
     const remainder = pictures.length % rowSize;
     const year = new Date().getFullYear();
 
-    console.log("remainder: " + remainder);
+    function sendModal(modalState: boolean){
+        modal(modalState);
+    }
 
     if(remainder){
         console.log("remainder: " + remainder);
@@ -47,7 +50,7 @@ export default function Gallery({pictures}: GalleryProps){
     return (
         <div>
             {rowsOfPictures.map(row => (
-                <Row pictures={row}/>
+                <Row pictures={row} modal={sendModal}/>
             ))}
         </div>
     );

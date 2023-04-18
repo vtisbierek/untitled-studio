@@ -7,10 +7,21 @@ import Gallery from '@/components/Gallery';
 import Image from 'next/image';
 import EmailPanel from '@/components/EmailPanel';
 import Footer from '@/components/Footer';
-import { pictures } from '../../pictures';
-import clients from "../../public/images/Group 89.png";
+import Modal from '@/components/Modal';
+import {useState} from "react";
+import { pictures } from '../../pictures'; //vai sair depois, pois as imagens vão vir do CMS
+import clients from "../../public/images/Group 89.png"; //também vai sair, pois vai vir do CMS
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
+
+  function getModal(modalState: boolean){
+    setShowModal(modalState);
+  }
+
+  console.log(showModal);
+  
+
   return (
     <>
       <Head>
@@ -54,7 +65,7 @@ export default function Home() {
               <p>포트폴리오</p>
             </Link>
           </div>
-          <Gallery pictures={pictures}/>
+          <Gallery pictures={pictures} modal={getModal}/>
           <div className={styles.seeMore}>
             <button>
               <h1>VIEW MORE</h1>
@@ -79,6 +90,9 @@ export default function Home() {
         <section>
           <Footer />
         </section>
+        <Modal show={showModal} onClose={() => setShowModal(false)}>
+          Lalalala
+        </Modal>
       </main>
     </>
   )
