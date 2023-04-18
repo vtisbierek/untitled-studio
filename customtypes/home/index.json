@@ -1,0 +1,192 @@
+{
+  "id": "home",
+  "label": "Home",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "coverimgleft": {
+        "type": "Image",
+        "config": {
+          "label": "coverImgLeft",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "covertitleleft": {
+        "type": "Text",
+        "config": {
+          "label": "coverTitleLeft",
+          "placeholder": ""
+        }
+      },
+      "coverdescriptionleft": {
+        "type": "Text",
+        "config": {
+          "label": "coverDescriptionLeft",
+          "placeholder": ""
+        }
+      },
+      "coverdescriptionkrleft": {
+        "type": "Text",
+        "config": {
+          "label": "coverDescriptionKRLeft",
+          "placeholder": ""
+        }
+      },
+      "coverimgright": {
+        "type": "Image",
+        "config": {
+          "label": "coverImgRight",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "covertitleright": {
+        "type": "Text",
+        "config": {
+          "label": "coverTitleRight",
+          "placeholder": ""
+        }
+      },
+      "coverdescriptionright": {
+        "type": "Text",
+        "config": {
+          "label": "coverDescriptionRight",
+          "placeholder": ""
+        }
+      },
+      "coverdescriptionkrright": {
+        "type": "Text",
+        "config": {
+          "label": "coverDescriptionKRRight",
+          "placeholder": ""
+        }
+      },
+      "carouselimg1": {
+        "type": "Image",
+        "config": {
+          "label": "carouselImg1",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "carouseltitle1": {
+        "type": "Text",
+        "config": {
+          "label": "carouselTitle1",
+          "placeholder": ""
+        }
+      },
+      "carouseldescription1": {
+        "type": "Text",
+        "config": {
+          "label": "carouselDescription1",
+          "placeholder": ""
+        }
+      },
+      "carouseldescriptionkr1": {
+        "type": "Text",
+        "config": {
+          "label": "carouselDescriptionKR1",
+          "placeholder": ""
+        }
+      },
+      "carouselimg2": {
+        "type": "Image",
+        "config": {
+          "label": "carouselImg2",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "carouseltitle2": {
+        "type": "Text",
+        "config": {
+          "label": "carouselTitle2",
+          "placeholder": ""
+        }
+      },
+      "carouseldescription2": {
+        "type": "Text",
+        "config": {
+          "label": "carouselDescription2",
+          "placeholder": ""
+        }
+      },
+      "carouseldescriptionkr2": {
+        "type": "Text",
+        "config": {
+          "label": "carouselDescriptionKR2",
+          "placeholder": ""
+        }
+      },
+      "carouselimg3": {
+        "type": "Image",
+        "config": {
+          "label": "carouselImg3",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "carouseltitle3": {
+        "type": "Text",
+        "config": {
+          "label": "carouselTitle3",
+          "placeholder": ""
+        }
+      },
+      "carouseldescription3": {
+        "type": "Text",
+        "config": {
+          "label": "carouselDescription3",
+          "placeholder": ""
+        }
+      },
+      "carouseldescriptionkr3": {
+        "type": "Text",
+        "config": {
+          "label": "carouselDescriptionKR3",
+          "placeholder": ""
+        }
+      },
+      "carouselimg4": {
+        "type": "Image",
+        "config": {
+          "label": "carouselImg4",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "carouseltitle4": {
+        "type": "Text",
+        "config": {
+          "label": "carouselTitle4",
+          "placeholder": ""
+        }
+      },
+      "carouseldescription4": {
+        "type": "Text",
+        "config": {
+          "label": "carouselDescription4",
+          "placeholder": ""
+        }
+      },
+      "carouseldescriptionkr4": {
+        "type": "Text",
+        "config": {
+          "label": "carouselDescriptionKR4",
+          "placeholder": ""
+        }
+      },
+      "ourclientsimg": {
+        "type": "Image",
+        "config": {
+          "label": "ourClientsImg",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

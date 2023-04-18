@@ -25,8 +25,6 @@ export default function Gallery({pictures, modal}: GalleryProps){
     }
 
     if(remainder){
-        console.log("remainder: " + remainder);
-        
         const placeHolder = {
             url: usLogo,
             alt: "untitled studio logo",

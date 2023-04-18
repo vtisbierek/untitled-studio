@@ -10,10 +10,41 @@ import Footer from '@/components/Footer';
 import Modal, {RenderModalBackdropProps} from "react-overlays/Modal";
 import {useState} from "react";
 import Detail from '@/components/Detail';
+import { GetStaticProps } from 'next';
+import {client} from "../services/prismic";
+import * as prismicH from '@prismicio/helpers';
 import { pictures, details } from '../../pictures'; //vai sair depois, pois as imagens vão vir do CMS
 import clients from "../../public/images/Group 89.png"; //também vai sair, pois vai vir do CMS
 
-export default function Home() {
+type Content = {
+  coverSection: {
+    left: {
+      image: string;
+      title: string;
+      description: string;
+      descriptionKR: string;
+    },
+    right: {
+      image: string;
+      title: string;
+      description: string;
+      descriptionKR: string;
+    }
+  },
+  carousel: {
+    image: string;
+    title: string;
+    description: string;
+    descriptionKR: string;
+  }[],
+  ourClientsImg: string;
+}
+
+interface ContentProps{
+  content: Content;
+}
+
+export default function Home({content}: ContentProps) {
   const [showModal, setShowModal] = useState(false);
 
   function getModal(modalState: boolean){
@@ -65,7 +96,7 @@ export default function Home() {
             </Link>
           </div>
         </section>
-        <CoverSection />
+        <CoverSection sectionData={content}/>
         <section className={styles.portfolioSection}>
           <div className={styles.portfolioTitle}>
             <Link href="/portfolio">
@@ -101,4 +132,87 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await client.getSingle("home");
+
+  const {
+    coverimgleft,
+    covertitleleft,
+    coverdescriptionleft,
+    coverdescriptionkrleft,
+    coverimgright,
+    covertitleright,
+    coverdescriptionright,
+    coverdescriptionkrright,
+    carouselimg1,
+    carouseltitle1,
+    carouseldescription1,
+    carouseldescriptionkr1,
+    carouselimg2,
+    carouseltitle2,
+    carouseldescription2,
+    carouseldescriptionkr2,
+    carouselimg3,
+    carouseltitle3,
+    carouseldescription3,
+    carouseldescriptionkr3,
+    carouselimg4,
+    carouseltitle4,
+    carouseldescription4,
+    carouseldescriptionkr4,
+    ourclientsimg
+  } = response.data;
+  
+  const content = {
+    coverSection: {
+      left: {
+        image: prismicH.asImageSrc(coverimgleft),
+        title: covertitleleft,
+        description: coverdescriptionleft,
+        descriptionKR: coverdescriptionkrleft
+      },
+      right:{
+        image: prismicH.asImageSrc(coverimgright),
+        title: covertitleright,
+        description: coverdescriptionright,
+        descriptionKR: coverdescriptionkrright
+      }
+    },
+    carousel: [
+      {
+        image: prismicH.asImageSrc(carouselimg1),
+        title: carouseltitle1,
+        description: carouseldescription1,
+        descriptionKR: carouseldescriptionkr1
+      }, {
+        image: prismicH.asImageSrc(carouselimg2),
+        title: carouseltitle2,
+        description: carouseldescription2,
+        descriptionKR: carouseldescriptionkr2
+      }, {
+        image: prismicH.asImageSrc(carouselimg3),
+        title: carouseltitle3,
+        description: carouseldescription3,
+        descriptionKR: carouseldescriptionkr3
+      }, {
+        image: prismicH.asImageSrc(carouselimg4),
+        title: carouseltitle4,
+        description: carouseldescription4,
+        descriptionKR: carouseldescriptionkr4
+      }
+    ],
+    ourClientsImg: prismicH.asImageSrc(ourclientsimg)
+  }
+
+  console.log(content);
+  
+   
+  return {
+    props: {
+      content
+    },
+    revalidate: 60 * 10, //essa página será gerada novamente a cada 10 minutos
+  }
 }

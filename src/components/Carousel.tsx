@@ -10,7 +10,18 @@ import { useRef } from "react";
 import {IoIosArrowDown} from "react-icons/io";
 import {IoIosArrowUp} from "react-icons/io";
 
-export default function Carousel(){
+type Carousel = {
+    image: string;
+    title: string;
+    description: string;
+    descriptionKR: string;
+}
+  
+interface CarouselProps{
+    carouselData: Carousel[];
+}
+
+export default function Carousel({carouselData}: CarouselProps){
     const slider = useRef<Slider>(null);
 
     const settings = {
@@ -31,7 +42,7 @@ export default function Carousel(){
                     <Image src={logo1} alt="logo 1"/>
                     <div className={styles.slideCaption}>
                         <h1>
-                            AMIABLE -
+                            {carouselData[0].title}
                         </h1>
                         <h1>
                             Logo Brand

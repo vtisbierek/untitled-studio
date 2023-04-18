@@ -1,0 +1,239 @@
+{
+  "coverimgleft": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
+      "width": 3024,
+      "height": 3778
+    },
+    "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
+    "width": 3024,
+    "height": 3778,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "covertitleleft": {
+    "__TYPE__": "FieldContent",
+    "value": "mainly",
+    "type": "Text"
+  },
+  "coverdescriptionleft": {
+    "__TYPE__": "FieldContent",
+    "value": "foreign",
+    "type": "Text"
+  },
+  "coverdescriptionkrleft": {
+    "__TYPE__": "FieldContent",
+    "value": "audience",
+    "type": "Text"
+  },
+  "coverimgright": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a",
+      "width": 4000,
+      "height": 4000
+    },
+    "url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a",
+    "width": 4000,
+    "height": 4000,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "covertitleright": {
+    "__TYPE__": "FieldContent",
+    "value": "naturally",
+    "type": "Text"
+  },
+  "coverdescriptionright": {
+    "__TYPE__": "FieldContent",
+    "value": "mistake",
+    "type": "Text"
+  },
+  "coverdescriptionkrright": {
+    "__TYPE__": "FieldContent",
+    "value": "replied",
+    "type": "Text"
+  },
+  "carouselimg1": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+      "width": 4272,
+      "height": 2848
+    },
+    "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+    "width": 4272,
+    "height": 2848,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "carouseltitle1": {
+    "__TYPE__": "FieldContent",
+    "value": "anything",
+    "type": "Text"
+  },
+  "carouseldescription1": {
+    "__TYPE__": "FieldContent",
+    "value": "start",
+    "type": "Text"
+  },
+  "carouseldescriptionkr1": {
+    "__TYPE__": "FieldContent",
+    "value": "hall",
+    "type": "Text"
+  },
+  "carouselimg2": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
+      "width": 3212,
+      "height": 3880
+    },
+    "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
+    "width": 3212,
+    "height": 3880,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "carouseltitle2": {
+    "__TYPE__": "FieldContent",
+    "value": "planet",
+    "type": "Text"
+  },
+  "carouseldescription2": {
+    "__TYPE__": "FieldContent",
+    "value": "son",
+    "type": "Text"
+  },
+  "carouseldescriptionkr2": {
+    "__TYPE__": "FieldContent",
+    "value": "or",
+    "type": "Text"
+  },
+  "carouselimg3": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
+      "width": 4000,
+      "height": 4000
+    },
+    "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
+    "width": 4000,
+    "height": 4000,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "carouseltitle3": {
+    "__TYPE__": "FieldContent",
+    "value": "strength",
+    "type": "Text"
+  },
+  "carouseldescription3": {
+    "__TYPE__": "FieldContent",
+    "value": "realize",
+    "type": "Text"
+  },
+  "carouseldescriptionkr3": {
+    "__TYPE__": "FieldContent",
+    "value": "clear",
+    "type": "Text"
+  },
+  "carouselimg4": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
+      "width": 4016,
+      "height": 6016
+    },
+    "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
+    "width": 4016,
+    "height": 6016,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "carouseltitle4": {
+    "__TYPE__": "FieldContent",
+    "value": "mother",
+    "type": "Text"
+  },
+  "carouseldescription4": {
+    "__TYPE__": "FieldContent",
+    "value": "bell",
+    "type": "Text"
+  },
+  "carouseldescriptionkr4": {
+    "__TYPE__": "FieldContent",
+    "value": "captured",
+    "type": "Text"
+  },
+  "ourclientsimg": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+      "width": 5243,
+      "height": 3495
+    },
+    "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+    "width": 5243,
+    "height": 3495,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  }
+}
