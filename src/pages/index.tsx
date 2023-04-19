@@ -161,12 +161,14 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
             </Link>
           </div>
           <Gallery pictures={gallery} modal={getModal} postId={getPostId}/>
-          <div className={styles.seeMore}>
-            <button>
-              <h1>VIEW MORE</h1>
-              <p>더보기</p>
-            </button>
-          </div>
+          {page < totalPages && (
+            <div className={styles.seeMore}>
+              <button>
+                <h1>VIEW MORE</h1>
+                <p>더보기</p>
+              </button>
+            </div>
+          )}
         </section>
         <section className={styles.clientSection}>
           <div className={styles.clientTitle}>
