@@ -63,7 +63,11 @@ interface ContentProps{
 export default function Home({content, portfolio, page, totalPages, generics}: ContentProps) {
   const [showModal, setShowModal] = useState(false);
   const [detailId, setDetailId] = useState("");
+  const [currentPage, setCurrentPage] = useState(page);
+  const [galleryView, setGalleryView] = useState(portfolio);
 
+  console.log(currentPage);
+  
   function getModal(modalState: boolean){
     setShowModal(modalState);
   }
@@ -102,11 +106,50 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
           }      
       }
     }
-
     return pictures;
   }  
 
-  const gallery = fixGallerySize(portfolio, generics);
+  async function getPortfolio(pageNumber: number){
+    const response = await client.getByType("portfolio", {
+        orderings: {
+            field: 'document.last_publication_date',
+            direction: 'desc',
+        },
+        pageSize: 9,
+        page: pageNumber,
+    });
+
+    const addedPortfolio: Portfolio[] = response.results.map(item => {
+      return {
+          postId: item.id,
+          thumbnail: prismicH.asImageSrc(item.data.thumbnail)!,
+          description: item.data.description,
+          descriptionKR: item.data.descriptionkr,
+          category: item.data.category,
+          tags: [
+            item.data.tag1,
+            item.data.tag2,
+            item.data.tag3
+          ],
+          images: [
+            prismicH.asImageSrc(item.data.detailimg1)!,
+            prismicH.asImageSrc(item.data.detailimg2)!,
+            prismicH.asImageSrc(item.data.detailimg3)!,
+            prismicH.asImageSrc(item.data.detailimg4)!,
+            prismicH.asImageSrc(item.data.detailimg5)!,
+            prismicH.asImageSrc(item.data.detailimg6)!,
+            prismicH.asImageSrc(item.data.detailimg7)!,
+            prismicH.asImageSrc(item.data.detailimg8)!,
+            prismicH.asImageSrc(item.data.detailimg9)!,
+          ]
+      }
+    });
+    const newPortfolio = galleryView.concat(addedPortfolio);
+    setGalleryView(newPortfolio);
+    setCurrentPage(pageNumber);
+  }
+
+  const gallery = fixGallerySize(galleryView, generics);
   const renderBackdrop = (props: RenderModalBackdropProps) => <div className={styles.backdrop} {...props} />;
 
   return (
@@ -161,9 +204,9 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
             </Link>
           </div>
           <Gallery pictures={gallery} modal={getModal} postId={getPostId}/>
-          {page < totalPages && (
+          {currentPage < totalPages && (
             <div className={styles.seeMore}>
-              <button>
+              <button onClick={() => getPortfolio(page+1)}>
                 <h1>VIEW MORE</h1>
                 <p>더보기</p>
               </button>
