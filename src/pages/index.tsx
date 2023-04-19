@@ -107,10 +107,6 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
   }  
 
   const gallery = fixGallerySize(portfolio, generics);
-
-  console.log(portfolio);
-  console.log(gallery);
-
   const renderBackdrop = (props: RenderModalBackdropProps) => <div className={styles.backdrop} {...props} />;
 
   return (
@@ -306,9 +302,6 @@ export const getStaticProps: GetStaticProps = async () => {
     thumbnail: prismicH.asImageSrc(responseGenerics.data.thumbnail),
     image: prismicH.asImageSrc(responseGenerics.data.image),
   }
-
-  console.log(generics);
-  
   
   return {
     props: {
