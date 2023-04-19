@@ -34,7 +34,7 @@ export default function Row({pictures, modal, postId}: RowProps){
                                 <h1 className={styles.title}>{picture.description}</h1>
                                 <p className={styles.subTitle}>{picture.descriptionKR}</p>
                             </div>
-                            <p className={styles.tags}>{picture.tags.map(tag => `${tag} `)}</p>
+                            <p className={styles.tags}>{picture.tags.filter(tag => tag !== null).map(tag => `${tag} `)}</p>
                         </div>
                     </div>
                 </button>
