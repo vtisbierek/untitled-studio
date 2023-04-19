@@ -1,54 +1,42 @@
 import Row from "./Row";
-import { StaticImageData } from "next/image";
 import usLogo from "../../public/images/us-logo.jpg";
 
-type Picture = {
-    url: StaticImageData;
-    alt: string;
-    descriptionEng: string;
-    descriptionKor: string;
-    tags: string[];
+type Portfolio = {
+    postId: string;
+    thumbnail: string;
+    description: string;
+    descriptionKR: string;
+    category: string;
+    tags: string[],
+    images: string[];
 }
 
 interface GalleryProps{
-    pictures: Picture[];
+    pictures: Portfolio[];
     modal: (modalState: boolean) => void;
+    postId: (buttonId: string) => void;
 }
 
-export default function Gallery({pictures, modal}: GalleryProps){
-    const rowSize = 3;
-    const remainder = pictures.length % rowSize;
-    const year = new Date().getFullYear();
-
+export default function Gallery({pictures, modal, postId}: GalleryProps){
+    
     function sendModal(modalState: boolean){
         modal(modalState);
     }
 
-    if(remainder){
-        const placeHolder = {
-            url: usLogo,
-            alt: "untitled studio logo",
-            descriptionEng: "Untitled Studio",
-            descriptionKor: "언타이틀 스튜디오",
-            tags: [
-                "Copyright © " + year
-            ]
-        }
-
-        for(let i=0; i<(rowSize - remainder); i++){
-            pictures = [...pictures, placeHolder];
-        }
+    function sendPostId(buttonId: string){
+        postId(buttonId);
     }
-    
-    const rowsOfPictures: Picture[][] = [];
+
+    const rowsOfPictures: Portfolio[][] = [];
+    const rowSize = 3;
     for (let i=0; i<pictures.length; i+=rowSize) {
         rowsOfPictures.push(pictures.slice(i,i+rowSize));
     }
 
     return (
         <div>
-            {rowsOfPictures.map(row => (
-                <Row pictures={row} modal={sendModal}/>
+            {rowsOfPictures.map((row, index) => (
+                <Row pictures={row} modal={sendModal} postId={sendPostId} key={index}/>
             ))}
         </div>
     );

@@ -7,12 +7,11 @@ import Gallery from '@/components/Gallery';
 import EmailPanel from '@/components/EmailPanel';
 import Footer from '@/components/Footer';
 import Modal, {RenderModalBackdropProps} from "react-overlays/Modal";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Detail from '@/components/Detail';
 import { GetStaticProps } from 'next';
 import {client} from "../services/prismic";
 import * as prismicH from '@prismicio/helpers';
-import { pictures, details } from '../../pictures'; //vai sair depois, pois as imagens vão vir do CMS
 
 type Content = {
   coverSection: {
@@ -48,20 +47,69 @@ type Portfolio = {
   images: string[]
 }
 
+type Generics = {
+  thumbnail: string;
+  image: string;
+}
+
 interface ContentProps{
   content: Content;
   portfolio: Portfolio[];
+  page: number; 
+  totalPages: number;
+  generics: Generics;
 }
 
-export default function Home({content, portfolio}: ContentProps) {
+export default function Home({content, portfolio, page, totalPages, generics}: ContentProps) {
   const [showModal, setShowModal] = useState(false);
-
-  console.log(portfolio);
-  
+  const [detailId, setDetailId] = useState("");
 
   function getModal(modalState: boolean){
     setShowModal(modalState);
   }
+
+  function getPostId(buttonId: string){
+    setDetailId(buttonId);
+  }
+
+  function fixGallerySize(pictures: Portfolio[], genericProps: Generics){
+    const rowSize = 3;
+    const remainder = pictures.length % rowSize;
+    const year = new Date().getFullYear();
+
+    if(remainder){     
+      const placeHolder = {
+          postId: "0",
+          thumbnail: genericProps.thumbnail,
+          description: "Untitled Studio",
+          descriptionKR: "언타이틀 스튜디오",
+          category: "none",
+          tags: [
+              "Copyright © " + year
+          ],
+          images: [
+            genericProps.image,
+          ]
+      }
+      const placeHolder2 = {...placeHolder};
+      placeHolder2.postId = "1";
+
+      for(let i=0; i<(rowSize - remainder); i++){
+          if (i){
+              pictures = [...pictures, placeHolder2];
+          } else{
+              pictures = [...pictures, placeHolder];                
+          }      
+      }
+    }
+
+    return pictures;
+  }  
+
+  const gallery = fixGallerySize(portfolio, generics);
+
+  console.log(portfolio);
+  console.log(gallery);
 
   const renderBackdrop = (props: RenderModalBackdropProps) => <div className={styles.backdrop} {...props} />;
 
@@ -77,7 +125,7 @@ export default function Home({content, portfolio}: ContentProps) {
           onHide={() => setShowModal(false)}
           renderBackdrop={renderBackdrop}
         >
-          <Detail pictures={details}/>
+          <Detail pictures={gallery.find(item => item.postId === detailId)!}/>
         </Modal>
         <Header />
         <section className={styles.titleSection}>
@@ -116,7 +164,7 @@ export default function Home({content, portfolio}: ContentProps) {
               <p>포트폴리오</p>
             </Link>
           </div>
-          <Gallery pictures={pictures} modal={getModal}/>
+          <Gallery pictures={gallery} modal={getModal} postId={getPostId}/>
           <div className={styles.seeMore}>
             <button>
               <h1>VIEW MORE</h1>
@@ -251,11 +299,24 @@ export const getStaticProps: GetStaticProps = async () => {
         ]
     }
   });
+
+  const responseGenerics = await client.getSingle("generics");
+
+  const generics = {
+    thumbnail: prismicH.asImageSrc(responseGenerics.data.thumbnail),
+    image: prismicH.asImageSrc(responseGenerics.data.image),
+  }
+
+  console.log(generics);
+  
   
   return {
     props: {
       content,
-      portfolio
+      portfolio,
+      page: responsePortfolio.page,
+      totalPages: responsePortfolio.total_pages,
+      generics,
     },
     revalidate: 60 * 10, //essa página será gerada novamente a cada 10 minutos
   }

@@ -6,6 +6,57 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for Generics documents */
+interface GenericsDocumentData {
+    /**
+     * thumbnail field in *Generics*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: generics.thumbnail
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    thumbnail: prismicT.ImageField<never>;
+    /**
+     * image field in *Generics*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: generics.image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * Slice Zone field in *Generics*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: generics.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<GenericsDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Generics → Slice Zone*
+ *
+ */
+type GenericsDocumentDataSlicesSlice = never;
+/**
+ * Generics document from Prismic
+ *
+ * - **API ID**: `generics`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type GenericsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<GenericsDocumentData>, "generics", Lang>;
 /** Content for Home documents */
 interface HomeDocumentData {
     /**
@@ -483,12 +534,12 @@ interface PortfolioDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type PortfolioDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PortfolioDocumentData>, "portfolio", Lang>;
-export type AllDocumentTypes = HomeDocument | PortfolioDocument;
+export type AllDocumentTypes = GenericsDocument | HomeDocument | PortfolioDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomeDocumentData, HomeDocument, PortfolioDocumentData, PortfolioDocument, AllDocumentTypes };
+        export type { GenericsDocumentData, GenericsDocumentDataSlicesSlice, GenericsDocument, HomeDocumentData, HomeDocument, PortfolioDocumentData, PortfolioDocument, AllDocumentTypes };
     }
 }

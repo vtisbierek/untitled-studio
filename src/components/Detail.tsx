@@ -1,20 +1,25 @@
 import styles from "../styles/Detail.module.scss";
-import Image, {StaticImageData} from "next/image";
 
 type Picture = {
-    url: StaticImageData;
-    alt: string;
+    postId: string;
+    thumbnail: string;
+    description: string;
+    descriptionKR: string;
+    category: string;
+    tags: string[],
+    images: string[];
 }
 
 interface DetailProps{
-    pictures: Picture[];
+    pictures: Picture;
 }
 
 export default function Detail({pictures}: DetailProps){
+
     return (
         <div className={styles.container}>
-            {pictures.map(picture => (
-                <Image src={picture.url} alt={picture.alt}/>
+            {pictures.images.filter(item => item != null).map(picture => (
+                <img src={picture} alt="portfolio picture"/>
             ))}
         </div>
     );

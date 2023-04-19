@@ -1,0 +1,33 @@
+{
+  "id": "generics",
+  "label": "Generics",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "thumbnail": {
+        "type": "Image",
+        "config": {
+          "label": "thumbnail",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    }
+  }
+}
