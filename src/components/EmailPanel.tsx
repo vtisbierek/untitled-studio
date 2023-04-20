@@ -4,17 +4,28 @@ import kakaoIcon from "../../public/images/kakao-icon.png";
 import whatsappIcon from "../../public/images/whatsapp-icon.png";
 import Image from "next/image";
 import axios from "axios";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 export default function EmailPanel(){
     const [custName, setCustName] = useState("");
     const [custEmail, setCustEmail] = useState("");
     const [custMessage, setCustMessage] = useState("");
     const [custBusiness, setCustBusiness] = useState("card");
+    const [isValidInputs, setIsValidInputs] = useState(false);
+
+    useEffect(() => {
+        if(custName && custEmail && custMessage && custBusiness){
+            setIsValidInputs(true);
+        } else {
+            setIsValidInputs(false);
+        }
+    }, [custName, custEmail, custMessage, custBusiness]);
+
+
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
-        console.log("fui submetido");
+
         const response = await axios.post("http://localhost:3000/api/sendcontact", {
             name: custName,
             email: custEmail,
@@ -23,7 +34,6 @@ export default function EmailPanel(){
         });
 
         console.log(response);
-        
     }
 
     return (
@@ -77,7 +87,7 @@ export default function EmailPanel(){
                     <div className={styles.rightContent}>
                         <h1>Feel free to contact us for any project or information.</h1>
                         <p>궁금하신 점 또는 상담을 원하실 경우 부담없이 연락주세요.</p>
-                        <button className={styles.sendButton} form="emailForm" type="submit">
+                        <button className={styles.sendButton} form="emailForm" type="submit" disabled={!isValidInputs}>
                             Send
                         </button>
                         <div className={styles.socialButtons}>
