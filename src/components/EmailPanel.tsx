@@ -6,6 +6,7 @@ import Image from "next/image";
 import axios from "axios";
 import {useState, useEffect} from "react";
 import Modal, {RenderModalBackdropProps} from "react-overlays/Modal";
+import {RiCloseFill} from "react-icons/ri";
 
 export default function EmailPanel(){
     const [custName, setCustName] = useState("");
@@ -59,7 +60,12 @@ export default function EmailPanel(){
                 onHide={() => setShowModal(false)}
                 renderBackdrop={renderBackdrop}
             >
-                <h1 className={styles.modalMessage}>{sendMessage}</h1>
+                <div>
+                    <h1 className={styles.modalMessage}>{sendMessage}</h1>
+                    <button onClick={() => setShowModal(false)} className={styles.buttonClose}>
+                        <RiCloseFill />
+                    </button>
+                </div>
             </Modal>
             <div className={styles.emailTitle}>
                 <div>

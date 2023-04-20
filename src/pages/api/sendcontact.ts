@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     let emailContent = {
       from: "untitled.studio.official@gmail.com", // sender address
-      to: "metropoller@gmail.com", // list of receivers
+      to: "untitled.studio.official@gmail.com", // list of receivers
       subject: "Inquiry from Website", // Subject line
       text: "Name: " + name + "\nEmail: " + email + "\nPhone: " + phone + "\nBusiness: " + business + "\nMessage: " + message, // plain text body
       html: `<b>Name: </b><span>${name}</span><br /><b>Email: </b><span>${email}</span><br /><b>Phone: </b><span>${phone}</span><br /><b>Business: </b><span>${business}</span><br /><b>Message: </b><span>${message}</span>`, // html body
