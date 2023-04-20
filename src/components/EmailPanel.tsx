@@ -5,6 +5,7 @@ import whatsappIcon from "../../public/images/whatsapp-icon.png";
 import Image from "next/image";
 import axios from "axios";
 import {useState, useEffect} from "react";
+import Modal, {RenderModalBackdropProps} from "react-overlays/Modal";
 
 export default function EmailPanel(){
     const [custName, setCustName] = useState("");
@@ -13,6 +14,8 @@ export default function EmailPanel(){
     const [custMessage, setCustMessage] = useState("");
     const [custBusiness, setCustBusiness] = useState("card");
     const [isValidInputs, setIsValidInputs] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [sendMessage, setSendMessage] = useState("");
 
     useEffect(() => {
         if(custName && custEmail && custMessage && custBusiness && custPhone){
@@ -21,8 +24,6 @@ export default function EmailPanel(){
             setIsValidInputs(false);
         }
     }, [custName, custEmail, custMessage, custBusiness, custPhone]);
-
-
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
@@ -35,11 +36,31 @@ export default function EmailPanel(){
             message: custMessage
         });
 
-        console.log(response);
+        if(response.status === 201){
+            setSendMessage("Message sent successfully. Thank you for reaching out to us!");
+            setCustName("");
+            setCustEmail("");
+            setCustPhone("");
+            setCustBusiness("card");
+            setCustMessage("");
+        } else {
+            setSendMessage("Failure to send message... please try again or use direct email, Kakao or Whatsapp.");
+        }
+        setShowModal(true);
     }
+
+    const renderBackdrop = (props: RenderModalBackdropProps) => <div className={styles.backdrop} {...props} />;
 
     return (
         <div className={styles.container}>
+            <Modal
+                className={styles.modal}
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                renderBackdrop={renderBackdrop}
+            >
+                <h1 className={styles.modalMessage}>{sendMessage}</h1>
+            </Modal>
             <div className={styles.emailTitle}>
                 <div>
                     <h1>Contact us</h1>
@@ -75,7 +96,7 @@ export default function EmailPanel(){
                                 onChange={(e) => setCustPhone(e.target.value)}
                             />
                             <label>Category / 상담 카테고리</label>
-                            <select name="business" id="business" onChange={(e) => setCustBusiness(e.target.value)}>
+                            <select name="business" id="business" onChange={(e) => setCustBusiness(e.target.value)} value={custBusiness}>
                                 <option value="card">Business card 명함</option>
                                 <option value="logo">Logo 로고</option>
                                 <option value="retouching">Retouching 리터칭</option>
