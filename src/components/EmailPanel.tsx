@@ -5,6 +5,11 @@ import whatsappIcon from "../../public/images/whatsapp-icon.png";
 import Image from "next/image";
 
 export default function EmailPanel(){
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>){
+        event.preventDefault();
+        console.log("fui submetido");
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.emailTitle}>
@@ -16,7 +21,7 @@ export default function EmailPanel(){
             <div className={styles.splitPanel}>
                 <div className={styles.left}>
                     <div>
-                        <form>
+                        <form id="emailForm" onSubmit={handleSubmit}>
                             <label>Name / 성함</label>
                             <input type="text" placeholder="성함을 입력해주세요." className={styles.textEntry}/>
                             <label>Email / 이메일</label>
@@ -39,26 +44,28 @@ export default function EmailPanel(){
                     <div className={styles.rightContent}>
                         <h1>Feel free to contact us for any project or information.</h1>
                         <p>궁금하신 점 또는 상담을 원하실 경우 부담없이 연락주세요.</p>
-                        <button className={styles.sendButton}>Send</button>
+                        <button className={styles.sendButton} form="emailForm" type="submit">
+                            Send
+                        </button>
                         <div className={styles.socialButtons}>
                             <div className={styles.socialSet}>
-                                <button className={styles.emailButton}>
+                                <a className={styles.emailButton} href="mailto:untitled.studio.official@gmail.com" target="_blank">
                                     <Image src={emailIcon} alt="email icon" />
-                                </button>
+                                </a>
                                 <span>이메일</span>
                                 <span>E-MAIL</span>
                             </div>
                             <div className={styles.socialSet}>
-                                <button className={styles.kakaoButton}>
+                                <a className={styles.kakaoButton} href="http://pf.kakao.com/_Zgmxixj/chat" target="_blank">
                                     <Image src={kakaoIcon} alt="kakao talk icon" />
-                                </button>
+                                </a>
                                 <span>카카오채널</span>
                                 <span>KAKAO CHANNEL</span>
                             </div>
                             <div className={styles.socialSet}>
-                                <button className={styles.whatsappButton}>
+                                <a className={styles.whatsappButton} href="https://wa.me/5551996832084" target="_blank">
                                     <Image src={whatsappIcon} alt="whatsapp icon" />
-                                </button>
+                                </a>
                                 <span>왓츠앱</span>
                                 <span>WHATSAPP</span>
                             </div>

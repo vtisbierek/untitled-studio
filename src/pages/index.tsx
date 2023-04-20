@@ -7,7 +7,7 @@ import Gallery from '@/components/Gallery';
 import EmailPanel from '@/components/EmailPanel';
 import Footer from '@/components/Footer';
 import Modal, {RenderModalBackdropProps} from "react-overlays/Modal";
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import Detail from '@/components/Detail';
 import { GetStaticProps } from 'next';
 import {client} from "../services/prismic";
@@ -65,8 +65,6 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
   const [detailId, setDetailId] = useState("");
   const [currentPage, setCurrentPage] = useState(page);
   const [galleryView, setGalleryView] = useState(portfolio);
-
-  console.log(currentPage);
   
   function getModal(modalState: boolean){
     setShowModal(modalState);

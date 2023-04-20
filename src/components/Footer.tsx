@@ -10,11 +10,11 @@ export default function Footer(){
                     <div className={styles.sns}>
                         <h1>Social Media</h1>
                         <ul>
-                            <li><a href="https://www.instagram.com/untitled.studio.official/">- INSTAGRAM</a></li>
-                            <li><a href="https://www.behance.net/untitled__studio">- BEHANCE</a></li>
-                            <li><a href="https://www.pinterest.co.kr/untitledstudioofficial/">- PINTEREST</a></li>
-                            <li><a href="">- KAKAO CHANNEL</a></li>
-                            <li><a href="">- WHATSAPP</a></li>
+                            <li><a href="https://www.instagram.com/untitled.studio.official/" target="_blank">- INSTAGRAM</a></li>
+                            <li><a href="https://www.behance.net/untitled__studio" target="_blank">- BEHANCE</a></li>
+                            <li><a href="https://www.pinterest.co.kr/untitledstudioofficial/" target="_blank">- PINTEREST</a></li>
+                            <li><a href="http://pf.kakao.com/_Zgmxixj/chat" target="_blank">- KAKAO CHANNEL</a></li>
+                            <li><a href="https://wa.me/5551996832084" target="_blank">- WHATSAPP</a></li>
                         </ul>
                     </div>
                     <div className={styles.aboutUs}>
