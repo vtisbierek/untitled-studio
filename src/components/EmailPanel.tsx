@@ -9,17 +9,18 @@ import {useState, useEffect} from "react";
 export default function EmailPanel(){
     const [custName, setCustName] = useState("");
     const [custEmail, setCustEmail] = useState("");
+    const [custPhone, setCustPhone] = useState("");
     const [custMessage, setCustMessage] = useState("");
     const [custBusiness, setCustBusiness] = useState("card");
     const [isValidInputs, setIsValidInputs] = useState(false);
 
     useEffect(() => {
-        if(custName && custEmail && custMessage && custBusiness){
+        if(custName && custEmail && custMessage && custBusiness && custPhone){
             setIsValidInputs(true);
         } else {
             setIsValidInputs(false);
         }
-    }, [custName, custEmail, custMessage, custBusiness]);
+    }, [custName, custEmail, custMessage, custBusiness, custPhone]);
 
 
 
@@ -29,6 +30,7 @@ export default function EmailPanel(){
         const response = await axios.post("http://localhost:3000/api/sendcontact", {
             name: custName,
             email: custEmail,
+            phone: custPhone,
             business: custBusiness,
             message: custMessage
         });
@@ -63,6 +65,14 @@ export default function EmailPanel(){
                                 className={styles.textEntry}
                                 value={custEmail}
                                 onChange={(e) => setCustEmail(e.target.value)}
+                            />
+                            <label>Phone / 전화</label>
+                            <input 
+                                type="text"
+                                placeholder="전화를 입력해주세요."
+                                className={styles.textEntry}
+                                value={custPhone}
+                                onChange={(e) => setCustPhone(e.target.value)}
                             />
                             <label>Category / 상담 카테고리</label>
                             <select name="business" id="business" onChange={(e) => setCustBusiness(e.target.value)}>
