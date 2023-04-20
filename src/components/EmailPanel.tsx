@@ -3,11 +3,27 @@ import emailIcon from "../../public/images/email-icon.png";
 import kakaoIcon from "../../public/images/kakao-icon.png";
 import whatsappIcon from "../../public/images/whatsapp-icon.png";
 import Image from "next/image";
+import axios from "axios";
+import {useState} from "react";
 
 export default function EmailPanel(){
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>){
+    const [custName, setCustName] = useState("");
+    const [custEmail, setCustEmail] = useState("");
+    const [custMessage, setCustMessage] = useState("");
+    const [custBusiness, setCustBusiness] = useState("card");
+
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
         console.log("fui submetido");
+        const response = await axios.post("http://localhost:3000/api/sendcontact", {
+            name: custName,
+            email: custEmail,
+            business: custBusiness,
+            message: custMessage
+        });
+
+        console.log(response);
+        
     }
 
     return (
@@ -23,11 +39,23 @@ export default function EmailPanel(){
                     <div>
                         <form id="emailForm" onSubmit={handleSubmit}>
                             <label>Name / 성함</label>
-                            <input type="text" placeholder="성함을 입력해주세요." className={styles.textEntry}/>
+                            <input
+                                type="text"
+                                placeholder="성함을 입력해주세요."
+                                className={styles.textEntry}
+                                value={custName}
+                                onChange={(e) => setCustName(e.target.value)}
+                            />
                             <label>Email / 이메일</label>
-                            <input type="email" placeholder="이메일을 입력해주세요." className={styles.textEntry}/>
+                            <input 
+                                type="email"
+                                placeholder="이메일을 입력해주세요."
+                                className={styles.textEntry}
+                                value={custEmail}
+                                onChange={(e) => setCustEmail(e.target.value)}
+                            />
                             <label>Category / 상담 카테고리</label>
-                            <select name="business" id="business">
+                            <select name="business" id="business" onChange={(e) => setCustBusiness(e.target.value)}>
                                 <option value="card">Business card 명함</option>
                                 <option value="logo">Logo 로고</option>
                                 <option value="retouching">Retouching 리터칭</option>
@@ -36,7 +64,12 @@ export default function EmailPanel(){
                                 <option value="uiux">UI & UX 웹 UI & UX</option>
                             </select>
                             <label>Message / 상담내용</label>
-                            <textarea placeholder="상담내용을 적어주세요." className={styles.textEntry}/>
+                            <textarea
+                                placeholder="상담내용을 적어주세요."
+                                className={styles.textEntry}
+                                value={custMessage}
+                                onChange={(e) => setCustMessage(e.target.value)}
+                            />
                         </form>
                     </div>
                 </div>
