@@ -17,17 +17,19 @@ export default function EmailPanel(){
     const [isValidInputs, setIsValidInputs] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [sendMessage, setSendMessage] = useState("");
+    const [isBusy, setIsBusy] = useState(false);
 
     useEffect(() => {
-        if(custName && custEmail && custMessage && custBusiness && custPhone){
+        if(custName && custEmail && custMessage && custBusiness && custPhone && !isBusy){
             setIsValidInputs(true);
         } else {
             setIsValidInputs(false);
         }
-    }, [custName, custEmail, custMessage, custBusiness, custPhone]);
+    }, [custName, custEmail, custMessage, custBusiness, custPhone, isBusy]);
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
+        setIsBusy(true);
 
         const response = await axios.post("http://localhost:3000/api/sendcontact", {
             name: custName,
@@ -47,6 +49,7 @@ export default function EmailPanel(){
         } else {
             setSendMessage("Failure to send message... please try again or use direct email, Kakao or Whatsapp.");
         }
+        setIsBusy(false);
         setShowModal(true);
     }
 
