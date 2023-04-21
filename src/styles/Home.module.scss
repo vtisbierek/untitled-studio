@@ -132,8 +132,8 @@
 }
 
 .modal {
-  max-height: 60vh;
-  overflow-y: scroll;
+  //max-height: 60vh;
+  //overflow-y: scroll;
   position: fixed;
   max-width: 1440px;
   z-index: 1040;
@@ -144,12 +144,6 @@
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  -ms-overflow-style: none;  /* escondendo a scrollbar no IE e Edge */
-  scrollbar-width: none;  /* escondendo a scrollbar no Firefox */
-}
-
-.modal::-webkit-scrollbar{
-  display: none; /* escondendo a scrollbar no Chrome, Safari e Opera */
 }
 
 .backdrop {
@@ -161,4 +155,28 @@
   right: 0;
   background-color: #000;
   opacity: 0.8;
+}
+
+.detailDiv{
+  max-height: 60vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* escondendo a scrollbar no IE e Edge */
+  scrollbar-width: none;  /* escondendo a scrollbar no Firefox */
+}
+
+.detailDiv::-webkit-scrollbar{
+  display: none; /* escondendo a scrollbar no Chrome, Safari e Opera */
+}
+
+.buttonClose{
+  margin: 0;
+  padding: 0;
+  font-size: 1.25rem;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  bottom: 97.65%;
+  left: 100.15%;
+  color: #fff;
 }

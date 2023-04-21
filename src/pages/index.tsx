@@ -12,6 +12,7 @@ import Detail from '@/components/Detail';
 import { GetStaticProps } from 'next';
 import {client} from "../services/prismic";
 import * as prismicH from '@prismicio/helpers';
+import {RiCloseFill} from "react-icons/ri";
 
 type Content = {
   coverSection: {
@@ -162,7 +163,14 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
           onHide={() => setShowModal(false)}
           renderBackdrop={renderBackdrop}
         >
-          <Detail pictures={gallery.find(item => item.postId === detailId)!}/>
+          <div className={styles.modalDiv}>
+            <div className={styles.detailDiv}>
+              <Detail pictures={gallery.find(item => item.postId === detailId)!}/>
+            </div>
+            <button onClick={() => setShowModal(false)} className={styles.buttonClose}>
+              <RiCloseFill />
+            </button>
+          </div>
         </Modal>
         <Header />
         <section className={styles.titleSection}>
