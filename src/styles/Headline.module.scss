@@ -1,0 +1,51 @@
+.container{
+    background-color: #f6f6f6;
+}
+
+.content{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 7rem 0 5.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    a{
+        text-decoration: none;
+        color: #000;
+    }
+
+    button{
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        margin: 0 1.5rem 1.5rem;
+    }
+
+    h1{
+        font-family: 'Libre Bodoni', serif;
+        font-size: 2.815rem;
+        font-weight: 400;
+    }
+
+    span{
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 1.125rem;
+    }
+
+    p{
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 1.125rem;
+    }
+}
+
+.title{
+    margin-bottom: 1.5rem;
+}
+
+.categories{
+    margin-top: 1.5rem;
+    max-width: 900px;
+    text-align: center;
+}

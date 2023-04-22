@@ -175,28 +175,28 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
         <Header />
         <section className={styles.titleSection}>
           <div>
-            <Link href="/portfolio">
+            <Link href="/portfolio?category=card" as="/portfolio/card">
               Business card <span className={styles.titleKr}>명함</span>
             </Link>
             <span>/</span>
-            <Link href="/portfolio">
+            <Link href="/portfolio?category=logo" as="/portfolio/logo">
               Logo <span className={styles.titleKr}>로고</span>
             </Link>
             <span>/</span>
-            <Link href="/portfolio">
+            <Link href="/portfolio?category=retouching" as="/portfolio/retouching">
               Retouching <span className={styles.titleKr}>리터칭</span>
             </Link>
           </div>
           <div>
-            <Link href="/portfolio">
+            <Link href="/portfolio?category=printing" as="/portfolio/printing">
               Printing <span className={styles.titleKr}>인쇄물</span>
             </Link>
             <span>/</span>
-            <Link href="/portfolio">
+            <Link href="/portfolio?category=web" as="/portfolio/web">
               Web contents <span className={styles.titleKr}>웹컨텐츠</span>
             </Link>
             <span>/</span>
-            <Link href="/portfolio">
+            <Link href="/portfolio?category=uiux" as="/portfolio/uiux">
               UI & UX <span className={styles.titleKr}>웹 UI & UX</span>
             </Link>
           </div>
