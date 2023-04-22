@@ -11,16 +11,12 @@
     align-items: center;
     justify-content: center;
 
-    a{
-        text-decoration: none;
-        color: #000;
-    }
-
     button{
         cursor: pointer;
         background-color: transparent;
         border: none;
-        margin: 0 1.5rem 1.5rem;
+        border-radius: 8px;
+        padding: 0 0.5rem;
     }
 
     h1{
@@ -48,4 +44,13 @@
     margin-top: 1.5rem;
     max-width: 900px;
     text-align: center;
+
+    button{
+        margin: 0 1.5rem 1.5rem;
+    }
+}
+
+.isSelected{
+    background-color: #FDF050 !important;
+    text-decoration: underline;
 }
