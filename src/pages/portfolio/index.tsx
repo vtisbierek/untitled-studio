@@ -126,20 +126,41 @@ export default function Portfolio({portfolio, generics}: PortfolioProps){
 
   useEffect(() => {
     if(category){
-        setMenuCategory(category as string);
-        
-        const connectPrismic = async () => {
-          const portfolioByCategory = await getPortfolioByCategory(category as string);
-          setGalleryView(portfolioByCategory);
-          setGalleryReady(true);
-        };
-        connectPrismic();
+      setMenuCategory(category as string);
+      
+      const connectPrismic = async () => {
+        const portfolioByCategory = await getPortfolioByCategory(category as string);
+        setGalleryView(portfolioByCategory);
+        setGalleryReady(true);
+      };
+      connectPrismic();
+    } else {
+      const connectPrismic = async () => {
+        const portfolioAll = await getPortfolio();
+        setGalleryView(portfolioAll);
+        setGalleryReady(true);
+      };
+      connectPrismic();
     }
   }, []);  
 
-  console.log("hihi");
-  
-  console.log(galleryView);
+  useEffect(() => {
+    if(menuCategory === "all"){
+      const connectPrismic = async () => {
+        const portfolioAll = await getPortfolio();
+        setGalleryView(portfolioAll);
+        setGalleryReady(true);
+      };
+      connectPrismic();
+    } else {
+      const connectPrismic = async () => {
+        const portfolioByCategory = await getPortfolioByCategory(menuCategory);
+        setGalleryView(portfolioByCategory);
+        setGalleryReady(true);
+      };
+      connectPrismic();
+    }
+  }, [menuCategory]);
   
   function getModal(modalState: boolean){
     setShowModal(modalState);
