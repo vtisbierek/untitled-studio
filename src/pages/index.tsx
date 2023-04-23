@@ -61,6 +61,39 @@ interface ContentProps{
   generics: Generics;
 }
 
+export function fixGallerySize(pictures: Portfolio[], genericProps: Generics){
+  const rowSize = 3;
+  const remainder = pictures.length % rowSize;
+  const year = new Date().getFullYear();
+
+  if(remainder){     
+    const placeHolder = {
+        postId: "0",
+        thumbnail: genericProps.thumbnail,
+        description: "Untitled Studio",
+        descriptionKR: "언타이틀 스튜디오",
+        category: "none",
+        tags: [
+            "Copyright © " + year
+        ],
+        images: [
+          genericProps.image,
+        ]
+    }
+    const placeHolder2 = {...placeHolder};
+    placeHolder2.postId = "1";
+
+    for(let i=0; i<(rowSize - remainder); i++){
+        if (i){
+            pictures = [...pictures, placeHolder2];
+        } else{
+            pictures = [...pictures, placeHolder];                
+        }      
+    }
+  }
+  return pictures;
+}
+
 export default function Home({content, portfolio, page, totalPages, generics}: ContentProps) {
   const [showModal, setShowModal] = useState(false);
   const [detailId, setDetailId] = useState("");
@@ -73,42 +106,9 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
 
   function getPostId(buttonId: string){
     setDetailId(buttonId);
-  }
+  } 
 
-  function fixGallerySize(pictures: Portfolio[], genericProps: Generics){
-    const rowSize = 3;
-    const remainder = pictures.length % rowSize;
-    const year = new Date().getFullYear();
-
-    if(remainder){     
-      const placeHolder = {
-          postId: "0",
-          thumbnail: genericProps.thumbnail,
-          description: "Untitled Studio",
-          descriptionKR: "언타이틀 스튜디오",
-          category: "none",
-          tags: [
-              "Copyright © " + year
-          ],
-          images: [
-            genericProps.image,
-          ]
-      }
-      const placeHolder2 = {...placeHolder};
-      placeHolder2.postId = "1";
-
-      for(let i=0; i<(rowSize - remainder); i++){
-          if (i){
-              pictures = [...pictures, placeHolder2];
-          } else{
-              pictures = [...pictures, placeHolder];                
-          }      
-      }
-    }
-    return pictures;
-  }  
-
-  async function getPortfolio(pageNumber: number){
+  async function getPortfolioByPage(pageNumber: number){
     const response = await client.getByType("portfolio", {
         orderings: {
             field: 'document.last_publication_date',
@@ -212,7 +212,7 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
           <Gallery pictures={gallery} modal={getModal} postId={getPostId}/>
           {currentPage < totalPages && (
             <div className={styles.seeMore}>
-              <button onClick={() => getPortfolio(page+1)}>
+              <button onClick={() => getPortfolioByPage(page+1)}>
                 <h1>VIEW MORE</h1>
                 <p>더보기</p>
               </button>
