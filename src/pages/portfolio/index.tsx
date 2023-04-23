@@ -32,10 +32,12 @@ type Generics = {
   
 interface PortfolioProps{
   portfolio: Portfolio[];
+  page: number;
+  totalPages: number;
   generics: Generics;
 }
 
-async function getPortfolioByCategory(category: string){
+async function getPortfolioByCategory(category: string, page: number){
   const response = await client.getByType("portfolio", {
     predicates: [
       prismic.predicate.at("my.portfolio.category", category)
@@ -45,6 +47,7 @@ async function getPortfolioByCategory(category: string){
         direction: 'desc',
     },
     pageSize: 9,
+    page: page,
   });
 
   const portfolio: Portfolio[] = response.results.map(item => {
@@ -73,16 +76,23 @@ async function getPortfolioByCategory(category: string){
     }
   });
 
-  return portfolio;
+  const portfolioData = {
+    content: portfolio,
+    page: response.page,
+    totalPages: response.total_pages,
+  };
+
+  return portfolioData;
 }
 
-async function getPortfolio(){
+async function getPortfolio(page: number){
   const response = await client.getByType("portfolio", {
     orderings: {
         field: 'document.last_publication_date',
         direction: 'desc',
     },
     pageSize: 9,
+    page: page,
   });
 
   const portfolio: Portfolio[] = response.results.map(item => {
@@ -111,15 +121,22 @@ async function getPortfolio(){
     }
   });
 
-  return portfolio;
+  const portfolioData = {
+    content: portfolio,
+    page: response.page,
+    totalPages: response.total_pages,
+  };
+
+  return portfolioData;
 }
 
-export default function Portfolio({portfolio, generics}: PortfolioProps){
+export default function Portfolio({portfolio, page, totalPages, generics}: PortfolioProps){
   const [menuCategory, setMenuCategory] = useState("all");
   const [galleryView, setGalleryView] = useState(portfolio);
-  const [galleryReady, setGalleryReady] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [detailId, setDetailId] = useState("");
+  const [currentPage, setCurrentPage] = useState(page);
+  const [currentTotalPages, setCurrentTotalPages] = useState(totalPages);
  
   const router = useRouter();
   const {category} = router.query;  
@@ -129,16 +146,10 @@ export default function Portfolio({portfolio, generics}: PortfolioProps){
       setMenuCategory(category as string);
       
       const connectPrismic = async () => {
-        const portfolioByCategory = await getPortfolioByCategory(category as string);
-        setGalleryView(portfolioByCategory);
-        setGalleryReady(true);
-      };
-      connectPrismic();
-    } else {
-      const connectPrismic = async () => {
-        const portfolioAll = await getPortfolio();
-        setGalleryView(portfolioAll);
-        setGalleryReady(true);
+        const portfolioByCategory = await getPortfolioByCategory(category as string, 1);
+        setGalleryView(portfolioByCategory.content);
+        setCurrentPage(portfolioByCategory.page);
+        setCurrentTotalPages(portfolioByCategory.totalPages);
       };
       connectPrismic();
     }
@@ -147,16 +158,18 @@ export default function Portfolio({portfolio, generics}: PortfolioProps){
   useEffect(() => {
     if(menuCategory === "all"){
       const connectPrismic = async () => {
-        const portfolioAll = await getPortfolio();
-        setGalleryView(portfolioAll);
-        setGalleryReady(true);
+        const portfolioAll = await getPortfolio(1);
+        setGalleryView(portfolioAll.content);
+        setCurrentPage(portfolioAll.page);
+        setCurrentTotalPages(portfolioAll.totalPages);
       };
       connectPrismic();
     } else {
       const connectPrismic = async () => {
-        const portfolioByCategory = await getPortfolioByCategory(menuCategory);
-        setGalleryView(portfolioByCategory);
-        setGalleryReady(true);
+        const portfolioByCategory = await getPortfolioByCategory(menuCategory, 1);
+        setGalleryView(portfolioByCategory.content);
+        setCurrentPage(portfolioByCategory.page);
+        setCurrentTotalPages(portfolioByCategory.totalPages);
       };
       connectPrismic();
     }
@@ -173,8 +186,22 @@ export default function Portfolio({portfolio, generics}: PortfolioProps){
   function handleCategory(category: string){
     setMenuCategory(category);
   }
+
+  async function getPortfolioByPage(category: string, page: number){
+    if(category === "all"){
+      const allByPage = await getPortfolio(page);
+      const newPortfolio = galleryView.concat(allByPage.content);
+      setGalleryView(newPortfolio);
+      setCurrentPage(page);
+    } else{
+      const categoryByPage = await getPortfolio(page);
+      const newPortfolio = galleryView.concat(categoryByPage.content);
+      setGalleryView(newPortfolio);
+      setCurrentPage(page);
+    }
+  }
   
-  const gallery = fixGallerySize(galleryView as Portfolio[], generics);
+  const gallery = fixGallerySize(galleryView, generics);
   const renderBackdrop = (props: RenderModalBackdropProps) => <div className={styles.backdrop} {...props} />;
 
   return (
@@ -199,8 +226,14 @@ export default function Portfolio({portfolio, generics}: PortfolioProps){
         {menuCategory !== "all" && (
           <Category category={menuCategory}/>
         )}
-        {galleryReady && (
-          <Gallery pictures={gallery} modal={getModal} postId={getPostId}/>
+        <Gallery pictures={gallery} modal={getModal} postId={getPostId}/>
+        {currentPage < currentTotalPages && (
+          <div className={styles.seeMore}>
+            <button onClick={() => getPortfolioByPage(menuCategory, currentPage+1)}>
+              <h1>VIEW MORE</h1>
+              <p>더보기</p>
+            </button>
+          </div>
         )}
         <Footer />
     </div>
@@ -252,6 +285,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       portfolio,
+      page: response.page,
+      totalPages: response.total_pages,
       generics,
     },
     revalidate: 60 * 10, //essa página será gerada novamente a cada 10 minutos
