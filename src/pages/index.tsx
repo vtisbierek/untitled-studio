@@ -143,6 +143,7 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
           ]
       }
     });
+
     const newPortfolio = galleryView.concat(addedPortfolio);
     setGalleryView(newPortfolio);
     setCurrentPage(pageNumber);
@@ -175,28 +176,28 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
         <Header />
         <section className={styles.titleSection}>
           <div>
-            <Link href="/portfolio?category=card" as="/portfolio/card">
+            <Link href="/portfolio?category=card" as="/portfolio">
               Business card <span className={styles.titleKr}>명함</span>
             </Link>
             <span>/</span>
-            <Link href="/portfolio?category=logo" as="/portfolio/logo">
+            <Link href="/portfolio?category=logo" as="/portfolio">
               Logo <span className={styles.titleKr}>로고</span>
             </Link>
             <span>/</span>
-            <Link href="/portfolio?category=retouching" as="/portfolio/retouching">
+            <Link href="/portfolio?category=retouching" as="/portfolio">
               Retouching <span className={styles.titleKr}>리터칭</span>
             </Link>
           </div>
           <div>
-            <Link href="/portfolio?category=printing" as="/portfolio/printing">
+            <Link href="/portfolio?category=printing" as="/portfolio">
               Printing <span className={styles.titleKr}>인쇄물</span>
             </Link>
             <span>/</span>
-            <Link href="/portfolio?category=web" as="/portfolio/web">
+            <Link href="/portfolio?category=web" as="/portfolio">
               Web contents <span className={styles.titleKr}>웹컨텐츠</span>
             </Link>
             <span>/</span>
-            <Link href="/portfolio?category=uiux" as="/portfolio/uiux">
+            <Link href="/portfolio?category=uiux" as="/portfolio">
               UI & UX <span className={styles.titleKr}>웹 UI & UX</span>
             </Link>
           </div>
