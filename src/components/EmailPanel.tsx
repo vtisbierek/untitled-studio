@@ -31,7 +31,9 @@ export default function EmailPanel(){
         event.preventDefault();
         setIsBusy(true);
 
-        const response = await axios.post("http://localhost:3000/api/sendcontact", {
+        const apiEndpoint = process.env.NEXT_PUBLIC_ENDPOINT + "/api/sendcontact";
+
+        const response = await axios.post(apiEndpoint, {
             name: custName,
             email: custEmail,
             phone: custPhone,
