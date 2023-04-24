@@ -194,7 +194,7 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
       setGalleryView(newPortfolio);
       setCurrentPage(page);
     } else{
-      const categoryByPage = await getPortfolio(page);
+      const categoryByPage = await getPortfolioByCategory(category, page);
       const newPortfolio = galleryView.concat(categoryByPage.content);
       setGalleryView(newPortfolio);
       setCurrentPage(page);
