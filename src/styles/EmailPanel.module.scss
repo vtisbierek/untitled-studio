@@ -3,6 +3,7 @@
     margin-top: 12rem;
 
     .emailTitle{
+        width: 100%;
         max-width: 1440px;
         margin: 0 auto 2.5rem;
 
@@ -125,7 +126,8 @@
                 .socialButtons{
                     display: flex;
                     justify-content: space-between;
-                    padding-left: 12rem;
+                    //padding-left: 12rem;
+                    padding-left: 20%;
 
                     span{
                         font-family: 'Noto Sans', sans-serif;
