@@ -10,21 +10,38 @@ import {useState, useRef, useEffect} from "react";
 
 export default function Header(){
     const [navbarState, setNavbarState] = useState("closed");
+    const [isAnimationEnd, setIsAnimationEnd] = useState(false);
 
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const element = ref.current;
+        element?.addEventListener("animationend", () => {
+            setIsAnimationEnd(true);
+        });
 
-        function handleAnimationEnd(){
-            if(navbarState === "djkahskjhasdkjhsa"){
-                alert("gol do gremio");
+    }, []);
+
+    useEffect(() => {
+        if(navbarState === "closing"){
+            if(isAnimationEnd){
+
+                const timeout = setTimeout(() => {
+                    setNavbarState("closed");
+                    setIsAnimationEnd(false);
+                }, 500);
+
             }
         }
-
-        element?.addEventListener("animationend", handleAnimationEnd);
-
     }, [navbarState]);
+
+    function handleHamburguer(){
+        if(navbarState === "closed"){
+            setNavbarState("open");
+        } else if (navbarState === "open"){
+            setNavbarState("closing");
+        }
+    }    
 
     return (
         <div className={styles.container}>
@@ -51,8 +68,8 @@ export default function Header(){
                     </Link>
                 </div>
                 <div className={styles.navbarShut}>
-                    <button className={styles.hamburguer} onClick={() => setOpenNavbar(!openNavbar)}>
-                        {openNavbar ? (
+                    <button className={styles.hamburguer} onClick={handleHamburguer}>
+                        {navbarState === "open" ? (
                             <CgClose />
                         ) : (
                             <GiHamburgerMenu />
