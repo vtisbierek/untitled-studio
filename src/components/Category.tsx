@@ -45,7 +45,7 @@ export default function Category({category}: CategoryProps){
     const menuCategory = content.find(item => item.code === category);
 
     return (
-        <div className={styles.container}>
+        <div className={category !== "all" ? styles.container : styles.containerClosed}>
             <div className={styles.content}>
                 <div className={styles.text}>
                     <h1>{menuCategory?.title} <span>{menuCategory?.titleKR}</span></h1>

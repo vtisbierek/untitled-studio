@@ -223,9 +223,7 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
         </Modal>
         <Header />
         <Headline currentMenu={menuCategory} selectedMenu={handleCategory}/>
-        {menuCategory !== "all" && (
-          <Category category={menuCategory}/>
-        )}
+        <Category category={menuCategory}/>
         <Gallery pictures={gallery} modal={getModal} postId={getPostId}/>
         {currentPage < currentTotalPages && (
           <div className={styles.seeMore}>
