@@ -200,8 +200,40 @@
       margin: 0 1rem;
     }
 
+  } 
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .titleSection{
+    padding: 3rem 1rem;
+    
+    span, a{
+      font-size: 1.15rem;
+    }
+
+    a{
+      margin: 0 0.5rem;
+    }
 
   } 
 
 }
 
+@media screen and (max-width: 390px) {
+
+  .titleSection{
+    padding: 2.5rem 0.75rem;
+    
+    span, a{
+      font-size: 1.05rem;
+    }
+
+    a{
+      margin: 0 0.5rem;
+    }
+
+  } 
+
+}
