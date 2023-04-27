@@ -182,3 +182,26 @@
   left: 100.15%;
   color: #fff;
 }
+
+@media screen and (max-width: 728px) {
+
+  .titleKr{
+    display: none;
+  }
+
+  .titleSection{
+    padding: 4rem 2rem;
+    
+    span, a{
+      font-size: 1.25rem;
+    }
+
+    a{
+      margin: 0 1rem;
+    }
+
+
+  } 
+
+}
+

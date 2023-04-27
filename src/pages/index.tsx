@@ -175,7 +175,7 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
         </Modal>
         <Header />
         <section className={styles.titleSection}>
-          <div>
+          <div className={styles.titleLine}>
             <Link href="/portfolio?category=card" as="/portfolio">
               Business card <span className={styles.titleKr}>명함</span>
             </Link>
@@ -188,7 +188,7 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
               Retouching <span className={styles.titleKr}>리터칭</span>
             </Link>
           </div>
-          <div>
+          <div className={styles.titleLine}>
             <Link href="/portfolio?category=printing" as="/portfolio">
               Printing <span className={styles.titleKr}>인쇄물</span>
             </Link>
