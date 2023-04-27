@@ -60,3 +60,77 @@
         margin-left: 5%;
     }
 }
+
+@media screen and (max-width: 728px) {
+    .coverSection{
+        h1{
+            font-size: 2.5rem;
+        }
+
+        p{
+            font-size: 1.4rem;
+        }
+
+        .coverPanel1{
+            img{
+                width: 100%;
+                height: auto;
+            }
+
+            .coverText{
+                position: relative;
+                bottom: 50px;
+                left: 5%;
+            }
+        }
+
+        .coverPanel2{
+            width: 75%;
+            position: static;
+            margin-top: 1.5rem;
+    
+            img{
+                width: 100%;
+                height: auto;
+            }
+    
+            .coverText{
+                position: relative;
+                bottom: 50px;
+                left: 50%;
+                color: #000;
+            }
+        }
+
+        .carousel{
+            margin-top: 13%;
+        }
+    
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .coverSection{
+        h1{
+            font-size: 1.75rem;
+        }
+
+        p{
+            font-size: 1rem;
+        }
+
+        .coverPanel1{
+            .coverText{
+                bottom: 45px;
+                left: 5%;
+            }
+        }
+
+        .coverPanel2{
+            .coverText{
+                left: 35%;
+            }
+        }
+    }
+}

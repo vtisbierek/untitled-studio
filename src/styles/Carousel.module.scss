@@ -77,3 +77,9 @@
     }
     
 }
+
+@media screen and (max-width: 728px) {
+    .carouselPanel{
+        display: none;
+    }
+}
