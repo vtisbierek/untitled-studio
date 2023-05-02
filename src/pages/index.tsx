@@ -156,6 +156,7 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
     <>
       <Head>
         <title>Untitled Studio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className={styles.main}>
         <Modal
