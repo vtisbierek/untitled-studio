@@ -35,8 +35,11 @@
     }
 }
 
-.carouselPanel .carousel .slide:hover .slideCaption{
-    visibility: visible;
+.carouselPanel .carousel:hover ~ button{
+    svg{
+        color: #fff;
+    }
+    
 }
 
 .carouselPanel .carousel .slide{
@@ -77,15 +80,13 @@
     }
 }
 
-.carouselPanel .carousel:hover ~ button{
-    svg{
-        color: #fff;
-    }
-    
+.carouselPanel .carousel .slide:hover .slideCaption{
+    visibility: visible;
 }
 
 @media screen and (max-width: 728px) {
     .carouselPanel{
-        display: none;
+        max-width: none;
+        width: 100%;
     }
 }
