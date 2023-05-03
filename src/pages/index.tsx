@@ -214,7 +214,7 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
           <Gallery pictures={gallery} modal={getModal} postId={getPostId}/>
           {currentPage < totalPages && (
             <div className={styles.seeMore}>
-              <button onClick={() => getPortfolioByPage(page+1)}>
+              <button onClick={() => getPortfolioByPage(currentPage+1)}>
                 <h1>VIEW MORE</h1>
                 <p>더보기</p>
               </button>
