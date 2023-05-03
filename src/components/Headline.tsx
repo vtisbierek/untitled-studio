@@ -42,7 +42,7 @@ export default function Headline({currentMenu, selectedMenu}: HeadlineProps){
                         onClick={(e) => selectedMenu(e.currentTarget.value)}
                         className={currentMenu === "printing" ? styles.isSelected : styles.notSelected}
                     >
-                        <p>#PRINTING <span>인쇄</span></p>
+                        <p>#PRINTING <span>인쇄물</span></p>
                     </button>
                     <button
                         value="web"
