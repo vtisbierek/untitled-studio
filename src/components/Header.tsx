@@ -54,7 +54,7 @@ export default function Header(){
                         ABOUT
                     </Link>
                 </div>
-                <div>
+                <div className={styles.navbarTitle}>
                     <Link href="/" className={styles.title} title="Untitled Studio">
                         Untitled Studio
                     </Link>

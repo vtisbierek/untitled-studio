@@ -7,6 +7,7 @@
 }
 
 .navbar{
+    position: relative;
     max-width: 1440px;
     width: 100%;
     display: flex;
@@ -26,20 +27,26 @@
         text-align: center;
         transition: all 0.3s;
     }
-
-    .title{
-        font-family: keepCalmMedium;
-        font-size: 1.5rem;
-        line-height: 1.8rem;
-        font-weight: 500;
-    } 
 }
 
-.navbarShut{
+.navbar .navbarTitle{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+} 
+
+.navbar .navbarTitle .title{
+    font-family: keepCalmMedium;
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    font-weight: 500;
+} 
+
+.navbar .navbarShut{
     display: none;
 }
 
-.hamburguer{
+.navbar .navbarShut .hamburguer{
     cursor: pointer;
     margin: 0 30px;
     border: none;
@@ -50,7 +57,7 @@
     font-size: 1.5rem;
 }
 
-.navbarOpen{
+.navbar .navbarShut .navbarOpen{
     position: absolute;
     width: 100%;
     left: 0;
@@ -96,11 +103,11 @@
     }
 }
 
-.navbarClosed{
+.navbar .navbarShut .navbarClosed{
     display: none;
 }
 
-.navbarClosing{
+.navbar .navbarShut .navbarClosing{
     position: absolute;
     width: 100%;
     left: 0;
