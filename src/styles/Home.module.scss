@@ -48,48 +48,48 @@
   max-width: 1440px;
   width: 100%;
   margin: 12rem auto;
+}
 
-  .portfolioTitle{
-    margin-left: 4rem;
-    margin-bottom: 2.5rem;
+.portfolioSection .portfolioTitle{
+  margin-left: 4rem;
+  margin-bottom: 2.5rem;
 
-    a{
-      text-decoration: none;
-      color: #000;
-    }
+  a{
+    text-decoration: none;
+    color: #000;
+  }
+
+  h1{
+    font-family: 'Libre Bodoni', serif;
+    font-size: 3.125rem;
+  }
+
+  p{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+  }
+}
+
+.portfolioSection .seeMore{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+
+  button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
 
     h1{
       font-family: 'Libre Bodoni', serif;
-      font-size: 3.125rem;
+      font-size: 1.5rem;
+      text-decoration: underline;
     }
 
     p{
       font-family: 'Noto Sans KR', sans-serif;
-      font-size: 1rem;
-    }
-  }
-
-  .seeMore{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3rem;
-
-    button{
-      cursor: pointer;
-      background-color: transparent;
-      border: none;
-
-      h1{
-        font-family: 'Libre Bodoni', serif;
-        font-size: 1.5rem;
-        text-decoration: underline;
-      }
-
-      p{
-        font-family: 'Noto Sans KR', sans-serif;
-        font-size: 1rem
-      }
+      font-size: 1rem
     }
   }
 }
@@ -133,10 +133,7 @@
   }
 }
 
-
 .modal {
-  //max-height: 60vh; already commented
-  //overflow-y: scroll; already commented
   position: fixed;
   max-width: 1440px;
   z-index: 1040;
@@ -217,8 +214,35 @@
     a{
       margin: 0 1rem;
     }
+  }
 
-  } 
+  .portfolioSection{
+    margin: 5rem auto;
+  }
+
+  .portfolioSection .portfolioTitle{
+    margin-left: 0;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  
+    h1{
+      font-size: 1.75rem;
+    }
+  }
+
+  .portfolioSection .seeMore{
+    margin-top: 2rem;
+  
+    button{  
+      h1{
+        font-size: 0.75rem;
+      }
+  
+      p{
+        font-size: 0.6rem
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {

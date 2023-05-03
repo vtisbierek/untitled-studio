@@ -7,7 +7,7 @@ import Gallery from '@/components/Gallery';
 import EmailPanel from '@/components/EmailPanel';
 import Footer from '@/components/Footer';
 import Modal, {RenderModalBackdropProps} from "react-overlays/Modal";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Detail from '@/components/Detail';
 import { GetStaticProps } from 'next';
 import {client} from "../services/prismic";
@@ -61,8 +61,7 @@ interface ContentProps{
   generics: Generics;
 }
 
-export function fixGallerySize(pictures: Portfolio[], genericProps: Generics){
-  const rowSize = 3;
+export function fixGallerySize(pictures: Portfolio[], genericProps: Generics, rowSize: number){
   const remainder = pictures.length % rowSize;
   const year = new Date().getFullYear();
 
@@ -99,6 +98,35 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
   const [detailId, setDetailId] = useState("");
   const [currentPage, setCurrentPage] = useState(page);
   const [galleryView, setGalleryView] = useState(portfolio);
+  const [gallerySize, setGallerySize] = useState({row: 3, page: 9});
+
+  useEffect(() => {
+    function handleRowSize() {
+      const screenWidth = window.innerWidth;
+
+      if(screenWidth > 728){
+        setGallerySize({row: 3, page: 9});
+      } else {
+        setGallerySize({row: 2, page: 8});
+        if(galleryView.length === 9){
+          setGalleryView(prevGalleryView => {
+            const adjustedGalleryView = [...prevGalleryView];
+            adjustedGalleryView.pop();
+
+            return adjustedGalleryView;
+          });
+        }
+      }
+    }
+
+    window.addEventListener('resize', handleRowSize);
+    handleRowSize();
+    
+    //removendo o event listener quando o componente window for desmontado pra evitar memory leaks
+    return () => {
+        window.removeEventListener('resize', handleRowSize);
+    }
+}, []);
   
   function getModal(modalState: boolean){
     setShowModal(modalState);
@@ -108,13 +136,13 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
     setDetailId(buttonId);
   } 
 
-  async function getPortfolioByPage(pageNumber: number){
+  async function getPortfolioByPage(pageNumber: number, pageSize: number){
     const response = await client.getByType("portfolio", {
         orderings: {
             field: 'document.last_publication_date',
             direction: 'desc',
         },
-        pageSize: 9,
+        pageSize: pageSize,
         page: pageNumber,
     });
 
@@ -149,7 +177,7 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
     setCurrentPage(pageNumber);
   }
 
-  const gallery = fixGallerySize(galleryView, generics);
+  const gallery = fixGallerySize(galleryView, generics, gallerySize.row);
   const renderBackdrop = (props: RenderModalBackdropProps) => <div className={styles.backdrop} {...props} />;
 
   return (
@@ -211,10 +239,10 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
               <p>포트폴리오</p>
             </Link>
           </div>
-          <Gallery pictures={gallery} modal={getModal} postId={getPostId}/>
+          <Gallery pictures={gallery} modal={getModal} postId={getPostId} size={gallerySize.row}/>
           {currentPage < totalPages && (
             <div className={styles.seeMore}>
-              <button onClick={() => getPortfolioByPage(currentPage+1)}>
+              <button onClick={() => getPortfolioByPage(currentPage+1, gallerySize.page)}>
                 <h1>VIEW MORE</h1>
                 <p>더보기</p>
               </button>

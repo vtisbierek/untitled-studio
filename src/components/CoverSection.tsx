@@ -31,11 +31,11 @@ type Content = {
   }
 
 export default function CoverSection({sectionData}: CoverProps){
-    const [divPosition, setDivPosition] = useState({ left: '50%', transform: 'translate(-50%, -50%)' });
+    const [divPosition, setDivPosition] = useState({left: "5%", transform: 'translateX(0)'});
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        function handleReposition() {
+        function handleDivPosition() {
             const screenWidth = window.innerWidth;
 
             if(screenWidth > 728){
@@ -48,12 +48,12 @@ export default function CoverSection({sectionData}: CoverProps){
             }
         }
     
-        window.addEventListener('resize', handleReposition);
-        handleReposition();
+        window.addEventListener('resize', handleDivPosition);
+        handleDivPosition();
         
         //removendo o event listener quando o componente window for desmontado pra evitar memory leaks
         return () => {
-            window.removeEventListener('resize', handleReposition);
+            window.removeEventListener('resize', handleDivPosition);
         }
     }, []);
 

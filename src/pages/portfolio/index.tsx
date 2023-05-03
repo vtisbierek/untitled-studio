@@ -37,7 +37,7 @@ interface PortfolioProps{
   generics: Generics;
 }
 
-async function getPortfolioByCategory(category: string, page: number){
+async function getPortfolioByCategory(category: string, page: number, pageSize: number){
   const response = await client.getByType("portfolio", {
     predicates: [
       prismic.predicate.at("my.portfolio.category", category)
@@ -46,7 +46,7 @@ async function getPortfolioByCategory(category: string, page: number){
         field: 'document.last_publication_date',
         direction: 'desc',
     },
-    pageSize: 9,
+    pageSize: pageSize,
     page: page,
   });
 
@@ -85,13 +85,13 @@ async function getPortfolioByCategory(category: string, page: number){
   return portfolioData;
 }
 
-async function getPortfolio(page: number){
+async function getPortfolio(page: number, pageSize: number){
   const response = await client.getByType("portfolio", {
     orderings: {
         field: 'document.last_publication_date',
         direction: 'desc',
     },
-    pageSize: 9,
+    pageSize: pageSize,
     page: page,
   });
 
@@ -131,42 +131,66 @@ async function getPortfolio(page: number){
 }
 
 export default function Portfolio({portfolio, page, totalPages, generics}: PortfolioProps){
-  const [menuCategory, setMenuCategory] = useState("all");
+  const [menuCategory, setMenuCategory] = useState("");
   const [galleryView, setGalleryView] = useState(portfolio);
   const [showModal, setShowModal] = useState(false);
   const [detailId, setDetailId] = useState("");
   const [currentPage, setCurrentPage] = useState(page);
   const [currentTotalPages, setCurrentTotalPages] = useState(totalPages);
+  const [gallerySize, setGallerySize] = useState({row: 3, page: 9});
  
   const router = useRouter();
   const {category} = router.query;  
 
   useEffect(() => {
-    if(category){
-      setMenuCategory(category as string);
-      
-      const connectPrismic = async () => {
-        const portfolioByCategory = await getPortfolioByCategory(category as string, 1);
-        setGalleryView(portfolioByCategory.content);
-        setCurrentPage(portfolioByCategory.page);
-        setCurrentTotalPages(portfolioByCategory.totalPages);
-      };
-      connectPrismic();
+    function handleRowSize() {
+      const screenWidth = window.innerWidth;
+
+      if(screenWidth > 728){
+        setGallerySize({row: 3, page: 9});
+      } else {
+        setGallerySize({row: 2, page: 8});
+        if(galleryView.length === 9){
+          setGalleryView(prevGalleryView => {
+            const adjustedGalleryView = [...prevGalleryView];
+            adjustedGalleryView.pop();
+
+            return adjustedGalleryView;
+          });
+        }
+      }
     }
-  }, []);  
+    window.addEventListener('resize', handleRowSize);
+    handleRowSize();
+
+    //removendo o event listener quando o componente window for desmontado pra evitar memory leaks
+    return () => {
+      window.removeEventListener('resize', handleRowSize);
+    }
+  }, []); 
+
+  useEffect(() => {
+    if(!menuCategory){
+      if(category){
+        setMenuCategory(category as string);
+      } else {
+        setMenuCategory("all");
+      }
+    }
+  }, [gallerySize]);
 
   useEffect(() => {
     if(menuCategory === "all"){
       const connectPrismic = async () => {
-        const portfolioAll = await getPortfolio(1);
+        const portfolioAll = await getPortfolio(1, gallerySize.page);
         setGalleryView(portfolioAll.content);
         setCurrentPage(portfolioAll.page);
         setCurrentTotalPages(portfolioAll.totalPages);
       };
       connectPrismic();
-    } else {
+    } else if(menuCategory){
       const connectPrismic = async () => {
-        const portfolioByCategory = await getPortfolioByCategory(menuCategory, 1);
+        const portfolioByCategory = await getPortfolioByCategory(menuCategory, 1, gallerySize.page);
         setGalleryView(portfolioByCategory.content);
         setCurrentPage(portfolioByCategory.page);
         setCurrentTotalPages(portfolioByCategory.totalPages);
@@ -188,20 +212,21 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
   }
 
   async function getPortfolioByPage(category: string, page: number){
-    if(category === "all"){
-      const allByPage = await getPortfolio(page);
+    if(category === "all"){     
+      
+      const allByPage = await getPortfolio(page, gallerySize.page);
       const newPortfolio = galleryView.concat(allByPage.content);
       setGalleryView(newPortfolio);
       setCurrentPage(page);
     } else{
-      const categoryByPage = await getPortfolioByCategory(category, page);
+      const categoryByPage = await getPortfolioByCategory(category, page, gallerySize.page);
       const newPortfolio = galleryView.concat(categoryByPage.content);
       setGalleryView(newPortfolio);
       setCurrentPage(page);
     }
   }
   
-  const gallery = fixGallerySize(galleryView, generics);
+  const gallery = fixGallerySize(galleryView, generics, gallerySize.row);
   const renderBackdrop = (props: RenderModalBackdropProps) => <div className={styles.backdrop} {...props} />;
 
   return (
@@ -224,7 +249,7 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
         <Header />
         <Headline currentMenu={menuCategory} selectedMenu={handleCategory}/>
         <Category category={menuCategory}/>
-        <Gallery pictures={gallery} modal={getModal} postId={getPostId}/>
+        <Gallery pictures={gallery} modal={getModal} postId={getPostId} size={gallerySize.row}/>
         {currentPage < currentTotalPages && (
           <div className={styles.seeMore}>
             <button onClick={() => getPortfolioByPage(menuCategory, currentPage+1)}>

@@ -15,9 +15,10 @@ interface GalleryProps{
     pictures: Portfolio[];
     modal: (modalState: boolean) => void;
     postId: (buttonId: string) => void;
+    size: number;
 }
 
-export default function Gallery({pictures, modal, postId}: GalleryProps){
+export default function Gallery({pictures, modal, postId, size}: GalleryProps){
     
     function sendModal(modalState: boolean){
         modal(modalState);
@@ -28,7 +29,7 @@ export default function Gallery({pictures, modal, postId}: GalleryProps){
     }
 
     const rowsOfPictures: Portfolio[][] = [];
-    const rowSize = 3;
+    const rowSize = size;
     for (let i=0; i<pictures.length; i+=rowSize) {
         rowsOfPictures.push(pictures.slice(i,i+rowSize));
     }
