@@ -19,46 +19,46 @@
         font-family: 'Noto Sans KR', sans-serif;
         font-size: 1.125rem;
     }
+}
 
-    .coverPanel1{
-        position: relative;
+.coverSection .coverPanel1{
+    position: relative;
+    width: 100%;
+
+    img{
+        width: 55%;
+        height: auto;
+    }
+}
+
+.coverSection .coverPanel1 .coverText{
+    position: absolute;
+    top: 10%;
+    left: 51%;
+}
+
+.coverSection .coverPanel2{
+    width: 47%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    img{
         width: 100%;
-
-        img{
-            width: 55%;
-            height: auto;
-        }
-
-        .coverText{
-            position: absolute;
-            top: 10%;
-            left: 51%;
-        }
+        height: auto;
     }
+}
 
-    .coverPanel2{
-        width: 47%;
-        position: absolute;
-        right: 0;
-        bottom: 0;
+.coverSection .coverPanel2 .coverText{
+    position: absolute;
+    top: 83%;
+    left: 5%;
+    color: #fff;
+}
 
-        img{
-            width: 100%;
-            height: auto;
-        }
-
-        .coverText{
-            position: absolute;
-            top: 83%;
-            left: 5%;
-            color: #fff;
-        }
-    }
-
-    .carousel{
-        margin-top: 13%;
-        margin-left: 5%;
-    }
+.carousel{
+    margin-top: 13%;
+    margin-left: 5%;
 }
 
 @media screen and (max-width: 728px) {

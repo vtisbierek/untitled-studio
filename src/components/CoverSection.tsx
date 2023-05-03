@@ -34,7 +34,7 @@ export default function CoverSection({sectionData}: CoverProps){
         <div className={styles.container}>
             <section className={styles.coverSection}>
                 <div className={styles.coverPanel1}>
-                    <img src={sectionData.coverSection.left.image} alt="cover image"/>
+                    <img src={sectionData.coverSection.left.image} alt={sectionData.coverSection.left.title}/>
                     <div className={styles.coverText}>
                         <h1>
                             {sectionData.coverSection.left.title}
@@ -48,7 +48,7 @@ export default function CoverSection({sectionData}: CoverProps){
                     </div>
                 </div>
                 <div className={styles.coverPanel2}>
-                    <img src={sectionData.coverSection.right.image} alt="model image"/>
+                    <img src={sectionData.coverSection.right.image} alt={sectionData.coverSection.right.title}/>
                     <div className={styles.coverText}>
                         <h1>
                             {sectionData.coverSection.right.title}

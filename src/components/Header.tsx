@@ -50,8 +50,8 @@ export default function Header(){
                     <Link href="/" title="HOME" className={styles.left}>
                         HOME
                     </Link>
-                    <Link href="/about" title="ABOUT" className={styles.left}>
-                        ABOUT
+                    <Link href="/portfolio" title="PORTFOLIO" className={styles.right}>
+                        PORTFOLIO
                     </Link>
                 </div>
                 <div className={styles.navbarTitle}>
@@ -60,8 +60,8 @@ export default function Header(){
                     </Link>
                 </div>
                 <div className={styles.navbarWide}>
-                    <Link href="/portfolio" title="PORTFOLIO" className={styles.right}>
-                        PORTFOLIO
+                    <Link href="/about" title="ABOUT" className={styles.left}>
+                        ABOUT
                     </Link>
                     <Link href="/contact" title="CONTACT US" className={styles.right}>
                         CONTACT US
@@ -84,13 +84,13 @@ export default function Header(){
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/about" title="ABOUT">
-                                    ABOUT
+                                <Link href="/portfolio" title="PORTFOLIO">
+                                    PORTFOLIO
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/portfolio" title="PORTFOLIO">
-                                    PORTFOLIO
+                                <Link href="/about" title="ABOUT">
+                                    ABOUT
                                 </Link>
                             </li>
                             <li>
