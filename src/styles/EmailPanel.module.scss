@@ -1,167 +1,167 @@
 .container{
     width: 100%;
     margin-top: 12rem;
+}
 
-    .emailTitle{
-        width: 100%;
-        max-width: 1440px;
-        margin: 0 auto 2.5rem;
+.emailTitle{
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto 2.5rem;
 
-        div{
-            margin-left: 4rem;
-        }
-
-        h1{
-            font-family: 'Libre Bodoni', serif;
-            font-size: 3.125rem;
-        }
-
-        p{
-            font-family: 'Noto Sans KR', sans-serif;
-            font-size: 1rem;
-        }
+    div{
+        margin-left: 4rem;
     }
 
-    .splitPanel{
-        display: flex;
+    h1{
+        font-family: 'Libre Bodoni', serif;
+        font-size: 3.125rem;
+    }
 
-        .left{
-            width: 50%;
-            background-color: #f6f6f6;
-            border-top-right-radius: 32px;
-            border-bottom-right-radius: 32px;
-    
-            div{
-                padding: 5.5rem 0;
-                margin: 0 6rem 0 auto;
-                max-width: 600px;
-                display: flex;
-                align-items: center;
-                justify-content: right;
-    
-                form{
-                    width: 70%;
-                    display: flex;
-                    flex-direction: column;
-                    font-family: 'Noto Sans', sans-serif;
-                    font-size: 1rem;
-                    line-height: 1.5rem;
-    
-                    label{
-                        color: #77808B;
-                        margin-bottom: 5px;
-                    }
-    
-                    label ~ label{
-                        margin-top: 15px;
-                    }
-    
-                    .textEntry{
-                        color: #000;
-                        font-family: 'Noto Sans', sans-serif;
-                        font-size: 1rem;
-                        line-height: 1.5rem;
-                        padding: 0.5rem;
-                        border: 1px solid #c4cbd3;
-                        border-radius: 6px;
-    
-                        &::placeholder{
-                            color: #A2A9B0;
-                        }
-                    }
-    
-                    textarea{
-                        resize: none;
-                        height: 6rem;
-                    }
-    
-                    select{
-                        color: #A2A9B0;
-                        font-family: 'Noto Sans', sans-serif;
-                        font-size: 1rem;
-                        line-height: 1.5rem;
-                        padding: 0.5rem;
-                        border: 1px solid #c4cbd3;
-                        border-radius: 6px;
-                    }
-                }
-            }
-        }
-    
-        .right{
-            width: 50%;
-
-            .rightContent{
-                max-width: 650px;
-                padding: 3rem;
-
-                h1{
-                    font-family: 'Libre Bodoni', serif;
-                    font-size: 3.125rem;
-                    margin-bottom: 1.5rem;
-                }
-
-                p{
-                    font-family: 'Noto Sans KR', sans-serif;
-                    font-size: 1rem;
-                    margin-bottom: 2.5rem;
-                }
-
-                .sendButton{
-                    cursor: pointer;
-                    background-color: #FDF050;
-                    border: none;
-                    border-radius: 8px;
-                    padding: 0.8rem 2.8rem;
-                    font-family: 'Noto Sans', sans-serif;
-                    font-size: 1rem;
-                    font-weight: 700;
-                    margin-bottom: 4rem;
-
-                    &:disabled{
-                        cursor: not-allowed;
-                    }
-                }
-
-                .socialButtons{
-                    display: flex;
-                    justify-content: space-between;
-                    //padding-left: 12rem;
-                    padding-left: 20%;
-
-                    span{
-                        font-family: 'Noto Sans', sans-serif;
-                        font-size: 1rem;
-                    }
-
-                    a{
-                        border: none;
-                        background-color: transparent;
-                        margin-bottom: 0.6rem;
-                    }
-
-                    .socialSet{
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-
-                        img{
-                            max-width: 4rem;
-                            height: auto;
-                        }
-                    }
-                }
-
-            }
-
-        }
+    p{
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 1rem;
     }
 }
 
+.splitPanel{
+    display: flex;
+}
+
+.splitPanel .left{
+    width: 50%;
+    background-color: #f6f6f6;
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 32px;
+    
+    div{
+        padding: 5.5rem 0;
+        margin: 0 6rem 0 auto;
+        max-width: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+
+        .mobileOnly{
+            display: none;
+        }
+    
+        form{
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.5rem;
+
+            label{
+                color: #77808B;
+                margin-bottom: 5px;
+            }
+
+            label ~ label{
+                margin-top: 15px;
+            }
+
+            .textEntry{
+                color: #000;
+                font-family: 'Noto Sans', sans-serif;
+                font-size: 1rem;
+                line-height: 1.5rem;
+                padding: 0.5rem;
+                border: 1px solid #c4cbd3;
+                border-radius: 6px;
+
+                &::placeholder{
+                    color: #A2A9B0;
+                }
+            }
+    
+            textarea{
+                resize: none;
+                height: 6rem;
+            }
+    
+            select{
+                color: #A2A9B0;
+                font-family: 'Noto Sans', sans-serif;
+                font-size: 1rem;
+                line-height: 1.5rem;
+                padding: 0.5rem;
+                border: 1px solid #c4cbd3;
+                border-radius: 6px;
+            }
+        }
+    }
+}
+    
+.splitPanel .right{
+    width: 50%;
+}
+
+.splitPanel .right .rightContent{
+    max-width: 650px;
+    padding: 3rem;
+
+    h1{
+        font-family: 'Libre Bodoni', serif;
+        font-size: 3.125rem;
+        margin-bottom: 1.5rem;
+    }
+
+    p{
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+.splitPanel .right .rightContent button{
+    cursor: pointer;
+    background-color: #FDF050;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 2.8rem;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 4rem;
+
+    &:disabled{
+        cursor: not-allowed;
+    }
+}
+
+.splitPanel .right .rightContent .socialButtons{
+    display: flex;
+    justify-content: space-between;
+    //padding-left: 12rem;
+    padding-left: 20%;
+
+    span{
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 1rem;
+    }
+
+    a{
+        border: none;
+        background-color: transparent;
+        margin-bottom: 0.6rem;
+    }
+}
+
+.splitPanel .right .rightContent .socialButtons .socialSet{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img{
+        max-width: 4rem;
+        height: auto;
+    }
+}
+                
 .modal {
-    //max-height: 60vh;
-    //overflow-y: scroll;
     position: fixed;
     max-width: 1440px;
     z-index: 1040;
@@ -172,12 +172,6 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    -ms-overflow-style: none;  /* escondendo a scrollbar no IE e Edge */
-    scrollbar-width: none;  /* escondendo a scrollbar no Firefox */
-}
-  
-.modal::-webkit-scrollbar{
-    display: none; /* escondendo a scrollbar no Chrome, Safari e Opera */
 }
   
 .backdrop {
@@ -210,5 +204,106 @@
 }
 
 @media screen and (max-width: 728px) {
+    .container{
+        margin-top: 4.5rem;
+    }
+    
+    .emailTitle{
+        margin: 0 auto 2rem;
+        text-align: center;
+    
+        div{
+            margin-left: 0;
+        }
+    
+        h1{
+            font-size: 1.5rem;
+        }
+    
+        p{
+            font-size: 0.8rem;
+        }
+    }
 
+    .splitPanel{
+        flex-direction: column;
+    }
+
+    .splitPanel .left{
+        width: 100%;
+        background-color: #f6f6f6;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        div{
+            padding: 2.5rem 0;
+            margin: 0;
+            max-width: none;
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            form{
+                width: 80%;
+                margin-bottom: 1.5rem;
+            }
+
+            .mobileOnly{
+                display: block;
+            }
+
+            p{
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+            }
+
+            button{
+                cursor: pointer;
+                background-color: #FDF050;
+                border: none;
+                border-radius: 8px;
+                padding: 0.8rem 2.8rem;
+                font-family: 'Noto Sans', sans-serif;
+                font-size: 1rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            
+                &:disabled{
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+
+    .splitPanel .right{
+        width: 100%;
+    }
+
+    .splitPanel .right .rightContent .desktopOnly{
+        display: none;
+    }
+    
+    .splitPanel .right .rightContent{
+        max-width: none;
+        width: 100%;
+        padding: 0 4rem;
+        margin: 5rem 0;
+    }
+    
+    .splitPanel .right .rightContent .socialButtons{
+        display: flex;
+        justify-content: space-between;
+        padding-left: 0;
+    
+        span{
+            font-size: 0.9rem;
+        }
+    }
 }

@@ -123,13 +123,17 @@ export default function EmailPanel(){
                                 onChange={(e) => setCustMessage(e.target.value)}
                             />
                         </form>
+                        <p className={styles.mobileOnly}>궁금하신 점 또는 상담을 원하실 경우 부담없이 연락주세요.</p>
+                        <button className={styles.mobileOnly} form="emailForm" type="submit" disabled={!isValidInputs}>
+                            Send
+                        </button>
                     </div>
                 </div>
                 <div className={styles.right}>
                     <div className={styles.rightContent}>
-                        <h1>Feel free to contact us for any project or information.</h1>
-                        <p>궁금하신 점 또는 상담을 원하실 경우 부담없이 연락주세요.</p>
-                        <button className={styles.sendButton} form="emailForm" type="submit" disabled={!isValidInputs}>
+                        <h1 className={styles.desktopOnly}>Feel free to contact us for any project or information.</h1>
+                        <p className={styles.desktopOnly}>궁금하신 점 또는 상담을 원하실 경우 부담없이 연락주세요.</p>
+                        <button className={styles.desktopOnly} form="emailForm" type="submit" disabled={!isValidInputs}>
                             Send
                         </button>
                         <div className={styles.socialButtons}>
