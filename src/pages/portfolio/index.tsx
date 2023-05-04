@@ -138,6 +138,7 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
   const [currentPage, setCurrentPage] = useState(page);
   const [currentTotalPages, setCurrentTotalPages] = useState(totalPages);
   const [gallerySize, setGallerySize] = useState({row: 3, page: 9});
+  const [layout, setLayout] = useState("desktop");
  
   const router = useRouter();
   const {category} = router.query;  
@@ -145,24 +146,32 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
   useEffect(() => {
     function handleRowSize() {
       const screenWidth = window.innerWidth;
+      const layoutType = screenWidth > 728 ? "desktop" : "mobile";
 
-      if(screenWidth > 728){
-        setGallerySize({row: 3, page: 9});
-      } else {
-        setGallerySize({row: 2, page: 8});
-        if(galleryView.length === 9){
-          setGalleryView(galleryView.slice(0,-1));
-        }
+      if(layoutType !== layout){
+        setLayout(layoutType);
       }
     }
     window.addEventListener('resize', handleRowSize);
     handleRowSize();
-
+    
     //removendo o event listener quando o componente window for desmontado pra evitar memory leaks
     return () => {
-      window.removeEventListener('resize', handleRowSize);
+        window.removeEventListener('resize', handleRowSize);
     }
-  }, []); 
+  }, [layout]);
+
+  useEffect(() => {
+    async function handleLayout(){
+      if(layout === "desktop"){
+        setGallerySize({row: 3, page: 9});
+      } else {      
+        setGallerySize({row: 2, page: 8});
+      }
+    }
+    handleLayout();
+
+  }, [layout]);
 
   useEffect(() => {
     if(!menuCategory){
@@ -192,7 +201,7 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
       };
       connectPrismic();
     }
-  }, [menuCategory]);
+  }, [menuCategory, gallerySize]);
   
   function getModal(modalState: boolean){
     setShowModal(modalState);
@@ -207,8 +216,7 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
   }
 
   async function getPortfolioByPage(category: string, page: number){
-    if(category === "all"){     
-      
+    if(category === "all"){
       const allByPage = await getPortfolio(page, gallerySize.page);
       const newPortfolio = galleryView.concat(allByPage.content);
       setGalleryView(newPortfolio);

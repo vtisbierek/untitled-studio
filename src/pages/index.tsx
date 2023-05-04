@@ -99,18 +99,15 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
   const [currentPage, setCurrentPage] = useState(page);
   const [galleryView, setGalleryView] = useState(portfolio);
   const [gallerySize, setGallerySize] = useState({row: 3, page: 9});
+  const [layout, setLayout] = useState("desktop");
 
   useEffect(() => {
     function handleRowSize() {
       const screenWidth = window.innerWidth;
+      const layoutType = screenWidth > 728 ? "desktop" : "mobile";
 
-      if(screenWidth > 728){
-        setGallerySize({row: 3, page: 9});
-      } else {
-        setGallerySize({row: 2, page: 8});
-        if(galleryView.length === 9){
-          setGalleryView(galleryView.slice(0,-1));
-        }
+      if(layoutType !== layout){
+        setLayout(layoutType);
       }
     }
     window.addEventListener('resize', handleRowSize);
@@ -120,7 +117,21 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
     return () => {
         window.removeEventListener('resize', handleRowSize);
     }
-}, []);
+  }, [layout]);
+
+  useEffect(() => {
+    async function handleLayout(){
+      if(layout === "desktop"){
+        setGallerySize({row: 3, page: 9});
+        await getPortfolioByPage(1, 9, true);
+      } else {      
+        setGallerySize({row: 2, page: 8});
+        await getPortfolioByPage(1, 8, true);
+      }
+    }
+    handleLayout();
+
+  }, [layout]);
   
   function getModal(modalState: boolean){
     setShowModal(modalState);
@@ -130,7 +141,7 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
     setDetailId(buttonId);
   } 
 
-  async function getPortfolioByPage(pageNumber: number, pageSize: number){
+  async function getPortfolioByPage(pageNumber: number, pageSize: number, reset: boolean){
     const response = await client.getByType("portfolio", {
         orderings: {
             field: 'document.last_publication_date',
@@ -140,7 +151,7 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
         page: pageNumber,
     });
 
-    const addedPortfolio: Portfolio[] = response.results.map(item => {
+    let addedPortfolio: Portfolio[] = response.results.map(item => {
       return {
           postId: item.id,
           thumbnail: prismicH.asImageSrc(item.data.thumbnail)!,
@@ -166,8 +177,11 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
       }
     });
 
-    const newPortfolio = galleryView.concat(addedPortfolio);
-    setGalleryView(newPortfolio);
+    if(!reset) {
+      addedPortfolio = galleryView.concat(addedPortfolio);
+    }
+    
+    setGalleryView(addedPortfolio);
     setCurrentPage(pageNumber);
   }
 
@@ -236,7 +250,7 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
           <Gallery pictures={gallery} modal={getModal} postId={getPostId} size={gallerySize.row}/>
           {currentPage < totalPages && (
             <div className={styles.seeMore}>
-              <button onClick={() => getPortfolioByPage(currentPage+1, gallerySize.page)}>
+              <button onClick={() => getPortfolioByPage(currentPage+1, gallerySize.page, false)}>
                 <h1>VIEW MORE</h1>
                 <p>더보기</p>
               </button>
@@ -265,8 +279,10 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const responseHome = await client.getSingle("home");
+  console.log(context);
+  
 
   const {
     coverimgleft,
