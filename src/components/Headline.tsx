@@ -13,6 +13,7 @@ export default function Headline({currentMenu, selectedMenu}: HeadlineProps){
                 <div className={styles.title}>
                     <button value="all" onClick={(e) => selectedMenu(e.currentTarget.value)}>
                         <h1>PORTFOLIO <span>포트폴리오</span></h1>
+                        <p>포트폴리오</p>
                     </button>
                 </div>
                 <div className={styles.categories}>

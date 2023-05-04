@@ -40,6 +40,12 @@
     margin-bottom: 1.5rem;
 }
 
+.title p{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.125rem;
+    display: none;
+}
+
 .categories{
     margin-top: 1.5rem;
     max-width: 900px;
@@ -53,4 +59,36 @@
 .isSelected{
     background-color: #FDF050 !important;
     text-decoration: underline;
+}
+
+@media screen and (max-width: 728px) {
+    .title p{
+        display: block;
+        font-size: 1rem;
+    }
+
+    .title span{
+        display: none;
+    }
+
+    .title h1{
+        font-size: 2rem;
+    }
+
+    .content{
+        padding: 5rem 0 2rem;
+    }
+
+    .categories{
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .categories p,
+    .categories span{
+        font-size: 1rem;
+    }
 }
