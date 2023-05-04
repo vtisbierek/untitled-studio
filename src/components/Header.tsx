@@ -6,10 +6,19 @@ import Image from "next/dist/client/image";
 import insta from "../../public/images/insta_nav.png";
 import behance from "../../public/images/be_nav.png";
 import pinterest from "../../public/images/pint_nav.png";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 export default function Header(){
-    const [isOpen, setIsOpen] = useState(false);  
+    const [isOpen, setIsOpen] = useState(false);
+    const [menuClasses, setMenuClasses] = useState(`${styles.navbarMenu}`);
+
+    useEffect(() => {
+        if(isOpen){
+            setMenuClasses(`${styles.navbarMenu} ${styles.active}`);
+        } else{
+            setMenuClasses(`${styles.navbarMenu}`);
+        }
+    }, [isOpen]);
 
     return (
         <div className={styles.container}>
@@ -44,7 +53,7 @@ export default function Header(){
                         )}
                     </button>
                 </div>
-                <div className={styles.navbarMenu}>
+                <div className={menuClasses}>
                     <hr />
                     <ul>
                         <li>
