@@ -296,18 +296,22 @@
     
     .splitPanel .right .rightContent{
         max-width: none;
-        width: 100%;
-        padding: 0 2rem;
-        margin: 5rem 0;
+        width: 80%;
+        padding: 0;
+        margin: 5rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .splitPanel .right .rightContent .socialButtons{
         display: flex;
         justify-content: space-between;
         padding-left: 0;
+        width: 100%;
     
         span{
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
     }
 

@@ -1,4 +1,8 @@
 import styles from "../styles/Footer.module.scss";
+import Image from "next/image";
+import instaIcon from "../../public/images/insta_nav.png";
+import behanceIcon from "../../public/images/be_nav.png";
+import pintIcon from "../../public/images/pint_nav.png";
 
 export default function Footer(){
     const year = new Date().getFullYear();
@@ -30,6 +34,17 @@ export default function Footer(){
                         <p>Republic of Korea (03387)</p>
                     </div>
                 </div>
+            </div>
+            <div className={styles.footerSocials}>
+                <a className={styles.instaIcon} href="https://www.instagram.com/untitled.studio.official/" target="_blank">
+                    <Image src={instaIcon} alt="instagram icon" />
+                </a>
+                <a className={styles.behanceIcon} href="https://www.behance.net/untitled__studio" target="_blank">
+                    <Image src={behanceIcon} alt="behance icon" />
+                </a>
+                <a className={styles.pintIcon} href="https://www.pinterest.co.kr/untitledstudioofficial/" target="_blank">
+                    <Image src={pintIcon} alt="pinterest icon" />
+                </a>
             </div>
             <div className={styles.copyright}>
                 <p>Copyright © {year} <span>Untitled Studio</span> All Rights Reserved.</p>
