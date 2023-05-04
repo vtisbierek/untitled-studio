@@ -14,6 +14,8 @@ import {fixGallerySize} from "../index";
 import Modal, {RenderModalBackdropProps} from "react-overlays/Modal";
 import {RiCloseFill} from "react-icons/ri";
 import Detail from "@/components/Detail";
+import Image from "next/image";
+import kakaoIcon from "../../../public/images/kakao-icon-square.png";
 
 type Portfolio = {
   postId: string;
@@ -261,6 +263,12 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
             </button>
           </div>
         )}
+        <div className={styles.socialSection}>
+          <a className={styles.kakaoButton} href="http://pf.kakao.com/_Zgmxixj/chat" target="_blank">
+              <Image src={kakaoIcon} alt="kakao icon" />
+          </a>
+          <span>상담하기</span>
+        </div>  
         <Footer />
     </div>
   );

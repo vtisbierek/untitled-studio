@@ -80,15 +80,19 @@
     }
 
     .categories{
-        width: 90%;
+        padding: 0 1.5rem;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
     }
+
+    .categories button{
+        margin: 0 0 1.5rem
+    }
     
     .categories p,
     .categories span{
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 }
