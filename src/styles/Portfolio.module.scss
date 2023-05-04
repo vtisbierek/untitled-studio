@@ -40,16 +40,16 @@
     top: 10px;
     width: 10px;
     height: calc(100% - 20px);
-  }
+}
   
-  .detailDiv::-webkit-scrollbar-thumb {
+.detailDiv::-webkit-scrollbar-thumb {
     background-color: #ccc;
     border-radius: 10px;
-  }
+}
   
-  .detailDiv::-webkit-scrollbar-thumb:hover {
+.detailDiv::-webkit-scrollbar-thumb:hover {
     background-color: #aaa;
-  }
+}
   
 .buttonClose{
     margin: 0;
@@ -102,5 +102,9 @@
             font-size: 0.6rem
           }
         }
+    }
+
+    .spacer{
+        margin-bottom: 5rem;
     }
 }

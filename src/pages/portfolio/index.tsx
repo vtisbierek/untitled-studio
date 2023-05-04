@@ -255,14 +255,18 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
         <Headline currentMenu={menuCategory} selectedMenu={handleCategory}/>
         <Category category={menuCategory}/>
         <Gallery pictures={gallery} modal={getModal} postId={getPostId} size={gallerySize.row}/>
-        {currentPage < currentTotalPages && (
-          <div className={styles.seeMore}>
-            <button onClick={() => getPortfolioByPage(menuCategory, currentPage+1)}>
-              <h1>VIEW MORE</h1>
-              <p>더보기</p>
-            </button>
-          </div>
-        )} 
+        {currentPage < currentTotalPages ?
+          (
+            <div className={styles.seeMore}>
+              <button onClick={() => getPortfolioByPage(menuCategory, currentPage+1)}>
+                <h1>VIEW MORE</h1>
+                <p>더보기</p>
+              </button>
+            </div>
+          ) : (
+            <div className={styles.spacer}></div>
+          )
+        }
         <Footer />
     </div>
   );

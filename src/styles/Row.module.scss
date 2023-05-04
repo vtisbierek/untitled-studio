@@ -71,5 +71,25 @@
     .container{
         margin: 0 auto 1px;
     }
+
+    .pictureBox .pictureText .pictureCaption{
+        top: 5%;
+        left: 5%;
+        width: 100%;
+    }
+
+    .pictureBox .pictureText .pictureCaption .title{
+        font-size: 0.8rem;
+    }
+    
+    .pictureBox .pictureText .pictureCaption .subTitle{
+        font-size: 0.6rem; 
+    }
+    
+    .pictureBox .pictureText .tags{
+        bottom: 5%;
+        left: 5%;
+        font-size: 0.6rem;    
+    }
 }
 
