@@ -297,7 +297,7 @@
     .splitPanel .right .rightContent{
         max-width: none;
         width: 100%;
-        padding: 0 4rem;
+        padding: 0 2rem;
         margin: 5rem 0;
     }
     
@@ -308,6 +308,12 @@
     
         span{
             font-size: 0.9rem;
+        }
+    }
+
+    .splitPanel .right .rightContent .socialButtons .socialSet{
+        img{
+            max-width: 3.5rem;
         }
     }
 }
