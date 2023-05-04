@@ -57,6 +57,15 @@ export default function Category({category}: CategoryProps){
                 <div className={styles.text}>
                     <h1>{menuCategory?.title} <span>{menuCategory?.titleKR}</span></h1>
                     <p>{menuCategory?.description}</p>
+                    <div className={styles.logoMobile}>
+                        <a className={styles.kakaoButton} href="http://pf.kakao.com/_Zgmxixj/chat" target="_blank">
+                            <Image src={kakaoIcon} alt="kakao icon" />
+                        </a>
+                        <span>상담하기</span>
+                    </div> 
+                </div>
+                <div className={styles.textMobile}>
+                    <p>{menuCategory?.description}</p>
                 </div>
                 <div className={styles.logo}>
                     <a className={styles.kakaoButton} href="http://pf.kakao.com/_Zgmxixj/chat" target="_blank">
