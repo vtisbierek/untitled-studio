@@ -1,6 +1,7 @@
 import styles from "../styles/Category.module.scss";
 import Image from "next/image";
 import kakaoIcon from "../../public/images/kakao-icon-square.png";
+import {useState, useEffect} from "react";
 
 interface CategoryProps{
     category: string;
@@ -40,9 +41,15 @@ const content = [
     }
 ];
 
-export default function Category({category}: CategoryProps){   
-
-    const menuCategory = content.find(item => item.code === category);
+export default function Category({category}: CategoryProps){
+    const [menuCategory, setMenuCategory] = useState(content[0]);
+    
+    useEffect(() => {
+        if(category !== "all"){
+            const newCategory = content.find(item => item.code === category)!;
+            setMenuCategory(newCategory);
+        }
+    }, [category]); 
 
     return (
         <div className={category !== "all" ? styles.container : styles.containerClosed}>
