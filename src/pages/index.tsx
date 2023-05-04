@@ -109,16 +109,14 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
       } else {
         setGallerySize({row: 2, page: 8});
         if(galleryView.length === 9){
-          setGalleryView(prevGalleryView => {
-            const adjustedGalleryView = [...prevGalleryView];
-            adjustedGalleryView.pop();
-
-            return adjustedGalleryView;
-          });
+          console.log(galleryView.length);
+          
+          console.log(galleryView);
+          
+          setGalleryView(galleryView.slice(0,-1));
         }
       }
     }
-
     window.addEventListener('resize', handleRowSize);
     handleRowSize();
     

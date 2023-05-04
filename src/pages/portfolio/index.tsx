@@ -151,12 +151,7 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
       } else {
         setGallerySize({row: 2, page: 8});
         if(galleryView.length === 9){
-          setGalleryView(prevGalleryView => {
-            const adjustedGalleryView = [...prevGalleryView];
-            adjustedGalleryView.pop();
-
-            return adjustedGalleryView;
-          });
+          setGalleryView(galleryView.slice(0,-1));
         }
       }
     }
