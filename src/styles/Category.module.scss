@@ -46,6 +46,7 @@
 
 .containerClosed{
     max-height:0px;
+    overflow: hidden;
     -webkit-transition:height, 0.6s linear;
     -moz-transition: height, 0.6s linear;
     -ms-transition: height, 0.6s linear;

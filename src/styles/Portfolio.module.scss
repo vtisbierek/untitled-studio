@@ -87,3 +87,20 @@
         }
     }
 }
+
+@media screen and (max-width: 728px) {
+    .seeMore{
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+      
+        button{  
+          h1{
+            font-size: 0.75rem;
+          }
+      
+          p{
+            font-size: 0.6rem
+          }
+        }
+    }
+}
