@@ -262,13 +262,7 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
               <p>더보기</p>
             </button>
           </div>
-        )}
-        <div className={styles.socialSection}>
-          <a className={styles.kakaoButton} href="http://pf.kakao.com/_Zgmxixj/chat" target="_blank">
-              <Image src={kakaoIcon} alt="kakao icon" />
-          </a>
-          <span>상담하기</span>
-        </div>  
+        )} 
         <Footer />
     </div>
   );
