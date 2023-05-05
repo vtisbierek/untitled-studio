@@ -1,1 +1,1 @@
-Website in development for the design company Untitled Studio from South Korea. Made with Next.js and Prismic.io CMS.
+Website in development for the design company Untitled Studio from South Korea. Made with Next.js, Prismic.io and Channel.io.
