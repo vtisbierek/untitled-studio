@@ -203,6 +203,57 @@
     color: red;
 }
 
+@media screen and (max-width: 1150px) {
+    .splitPanel .right .rightContent{
+        padding: 3rem 2rem;
+    
+        h1{
+            font-size: 2.875rem;
+        }
+    }
+    
+    .splitPanel .right .rightContent .socialButtons{
+        padding-left: 10%;
+    
+        span{
+            font-size: 0.8rem;
+        }
+    }
+
+    .splitPanel .left div{
+        margin: 0;
+        margin-right: 10%;
+    }
+
+    .splitPanel .left div form{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 970px) {
+    .splitPanel .right .rightContent{
+        padding: 3rem 1rem;
+    
+        h1{
+            font-size: 2.225rem;
+        }
+    }
+
+    .splitPanel .right .rightContent .socialButtons .socialSet{
+        img{
+            max-width: 3.5rem;
+        }
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .splitPanel .right .rightContent{
+        p{
+            font-size: 0.8rem;
+        }
+    }
+}
+
 @media screen and (max-width: 728px) {
     .container{
         margin-top: 4.5rem;
