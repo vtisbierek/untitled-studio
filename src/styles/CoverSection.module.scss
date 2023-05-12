@@ -63,6 +63,46 @@
     margin-left: 5%;
 }
 
+@media screen and (max-width: 1350px) {
+    .coverSection .coverPanel2 .coverText{
+        top: 80%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .coverSection .coverPanel2 .coverText{
+        top: 76%;
+    }
+
+    .coverSection{
+        h1{
+            font-size: 2.125rem;
+        }
+
+        p{
+            font-size: 1.125rem;
+        }
+    }
+
+    .coverSection .carousel{
+        margin-left: 2.5%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .coverSection .coverPanel2{
+        z-index: 100;
+    }
+
+    .coverSection .coverPanel2 .coverText{
+        top: 70%;
+    }
+
+    .coverSection .carousel{
+        margin-left: 0%;
+    }
+}
+
 @media screen and (max-width: 728px) {
     .coverSection{
         h1{

@@ -84,6 +84,12 @@
     visibility: visible;
 }
 
+@media screen and (max-width: 920px) {
+    .carouselPanel{
+        max-width: 328px;
+    }
+}
+
 @media screen and (max-width: 728px) {
     .carouselPanel{
         max-width: none;
