@@ -199,6 +199,40 @@
   color: #fff;
 }
 
+@media screen and (max-width: 1250px) {
+  .titleSection{
+    padding: 8rem 0;
+  }
+
+  .titleSection span{
+    font-size: 2.125rem;
+  }
+
+  .titleSection a{
+    font-size: 2.125rem;
+    margin: 0 1.6rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .titleSection{
+    padding: 6rem 0;
+  }
+
+  .titleSection span{
+    font-size: 1.815rem;
+  }
+
+  .titleSection a{
+    font-size: 1.815rem;
+    margin: 0 0.5rem;
+  }
+
+  .titleSection a span{
+    font-size: 1rem;
+  }
+}
+
 @media screen and (max-width: 728px) {
   .titleKr{
     display: none;
@@ -295,9 +329,7 @@
     a{
       margin: 0 0.5rem;
     }
-
   } 
-
 }
 
 @media screen and (max-width: 390px) {
