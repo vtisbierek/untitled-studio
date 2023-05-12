@@ -61,6 +61,45 @@
     }
 }
 
+@media screen and (max-width: 1150px) {
+    .footer .footerContent{
+        padding: 4rem 0;
+
+        h1{
+            font-size: 1.5rem;
+        }
+    
+        p, li{
+            font-size: 0.8rem;
+            line-height: 1.75rem;     
+        }
+    }
+    
+    .footer .footerContent .sns{
+        margin-right: 3rem;
+    }
+
+    .copyright{
+        margin: 1.25rem auto;
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .footer .footerContent{
+        padding: 3.5rem 0;
+
+        h1{
+            font-size: 1.4rem;
+        }
+    
+        p, li{
+            font-size: 0.7rem;
+            line-height: 1.75rem;     
+        }
+    }
+}
+
 @media screen and (max-width: 728px) {
     .container{
         margin-top: 1rem;
