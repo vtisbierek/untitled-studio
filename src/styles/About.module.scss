@@ -31,7 +31,7 @@
 .aboutContent{
     max-width: 1440px;
     margin: 0 auto;
-    padding-top: 6rem;
+    padding-top: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,14 +70,14 @@
         transition: all 0.2s;
 
         &:hover{
-            font-weight: 700;
+            transform: scale(1.05);
         }
 
         a{
             text-decoration: none;
             color: #000;
             font-family: 'Noto Sans KR', sans-serif;
-            font-size: 1.125rem;
+            font-size: 1.25rem;
         }
     }
 }

@@ -14,8 +14,7 @@ import {fixGallerySize} from "../index";
 import Modal, {RenderModalBackdropProps} from "react-overlays/Modal";
 import {RiCloseFill} from "react-icons/ri";
 import Detail from "@/components/Detail";
-import Image from "next/image";
-import kakaoIcon from "../../../public/images/kakao-icon-square.png";
+import Head from 'next/head';
 
 type Portfolio = {
   postId: string;
@@ -235,7 +234,12 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
   const renderBackdrop = (props: RenderModalBackdropProps) => <div className={styles.backdrop} {...props} />;
 
   return (
-    <div className={styles.container}>
+    <>
+      <Head>
+        <title>Untitled Studio | Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <div className={styles.container}>
         <Modal
           className={styles.modal}
           show={showModal}
@@ -268,7 +272,8 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
           )
         }
         <Footer />
-    </div>
+      </div>
+    </>
   );
 }
 
