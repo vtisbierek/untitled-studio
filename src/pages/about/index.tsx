@@ -3,8 +3,22 @@ import styles from "../../styles/About.module.scss";
 import Footer from "@/components/Footer";
 import Link from 'next/link';
 import Head from "next/head";
+import { GetStaticProps } from 'next';
+import {client} from "../../services/prismic";
+import * as prismicH from '@prismicio/helpers';
 
-export default function About(){
+type Content = {
+    image: string;
+    title: string;
+    paragraph1: string;
+    paragraph2: string;
+};
+
+interface AboutProps{
+    content: Content;
+}
+
+export default function About({content}: AboutProps){
     return (
         <>
             <Head>
@@ -21,12 +35,12 @@ export default function About(){
                 <section className={styles.about}>
                     <div className={styles.aboutContent}>
                         <div className={styles.left}>
-                            <img src="/images/about.png" alt="about us poster"/>
+                            <img src={content.image} alt={content.title}/>
                         </div>
                         <div className={styles.right}>
-                            <h1>언타이틀 스튜디오는 브랜드 디자인의 한 길만 걸어왔습니다.</h1>
-                            <p>넥스토 제품 안내카드 디자인 & 인쇄 넥스토 제품 안내카드 디자인 & 인쇄 넥스토 제품 안내카드 디자인 & 인쇄 넥스토 제품 안내카드 디자인 & 인쇄넥스토 제품 안내카드 디자인 & 인쇄넥스토 제품 안내카드 디자인 & 인쇄.</p>
-                            <p>넥스토 제품 안내카드 디자인 & 인쇄 넥스토 제품 안내카드 디자인 & 인쇄 넥스토 제품 안내카드 디자인 & 인쇄 넥스토 제품 안내카드 디자인 & 인쇄넥스토 제품 안내카드 디자인 & 인쇄넥스토 제품 안내카드 디자인 & 인쇄.</p>
+                            <h1>{content.title}</h1>
+                            <p>{content.paragraph1}</p>
+                            <p>{content.paragraph2}</p>
                             <button>
                                 <Link href="/contact">상담 문의</Link>
                             </button>
@@ -38,3 +52,28 @@ export default function About(){
         </>
     );
 }
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    const response = await client.getSingle("about");
+    
+    const {
+      image,
+      title,
+      paragraph1,
+      paragraph2,
+    } = response.data;
+  
+    const content = {
+        image: prismicH.asImageSrc(image),
+        title: title,
+        paragraph1: paragraph1,
+        paragraph2: paragraph2
+    }
+    
+    return {
+      props: {
+        content,
+      },
+      revalidate: 60 * 10, //essa página será gerada novamente a cada 10 minutos
+    }
+  }

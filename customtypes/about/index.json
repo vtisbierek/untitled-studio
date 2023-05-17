@@ -1,0 +1,46 @@
+{
+  "id": "about",
+  "label": "About",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "uid",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        }
+      },
+      "paragraph1": {
+        "type": "Text",
+        "config": {
+          "label": "paragraph1",
+          "placeholder": ""
+        }
+      },
+      "paragraph2": {
+        "type": "Text",
+        "config": {
+          "label": "paragraph2",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}
