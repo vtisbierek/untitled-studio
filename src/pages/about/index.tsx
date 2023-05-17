@@ -30,6 +30,7 @@ export default function About({content}: AboutProps){
                 <section className={styles.title}>
                     <div className={styles.titleContent}>
                         <h1>ABOUT US <span>우리에 대해</span></h1>
+                        <p>우리에 대해</p>
                     </div>
                 </section>
                 <section className={styles.about}>
