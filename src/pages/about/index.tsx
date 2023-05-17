@@ -8,7 +8,7 @@ export default function About(){
     return (
         <>
             <Head>
-                <title>Untitled Studio | Portfolio</title>
+                <title>Untitled Studio | About Us</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <div className={styles.container}>

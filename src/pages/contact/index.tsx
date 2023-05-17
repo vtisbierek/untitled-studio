@@ -7,7 +7,7 @@ export default function Contact(){
     return (
         <>
             <Head>
-                <title>Untitled Studio | Portfolio</title>
+                <title>Untitled Studio | Contact Us</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <div className={styles.container}>
