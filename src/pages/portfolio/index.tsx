@@ -241,7 +241,7 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
         <meta name="description" content="Untitled Studio is a design company with a full portfolio to meet all your needs: business cards (명함), logo (로고), printing service (인쇄물), photo retouching (리터칭), web contents (웹컨텐츠) and UX/UI (웹 UI & UX)." />
         <meta property="og:title" content="Untitled Studio - Your one-stop solution for branding and design" />
         <meta property="og:description" content="Untitled Studio is a design company with a full portfolio to meet all your needs: business cards (명함), logo (로고), printing service (인쇄물), photo retouching (리터칭), web contents (웹컨텐츠) and UX/UI (웹 UI & UX)." />
-        <meta property="og:image" content="/images/favicon.png" />
+        <meta property="og:image" content="/images/untitled.png" />
       </Head>
       <div className={styles.container}>
         <Modal
