@@ -24,6 +24,10 @@ export default function About({content}: AboutProps){
             <Head>
                 <title>Untitled Studio | About Us</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="description" content="Untitled Studio is a design company devoted to provide your business with a complete design solution: business cards (명함), logo (로고), printing service (인쇄물), photo retouching (리터칭), web contents (웹컨텐츠) and UX/UI (웹 UI & UX)." />
+                <meta property="og:title" content="Untitled Studio - Your one-stop solution for branding and design" />
+                <meta property="og:description" content="Untitled Studio is a design company devoted to provide your business with a complete design solution: business cards (명함), logo (로고), printing service (인쇄물), photo retouching (리터칭), web contents (웹컨텐츠) and UX/UI (웹 UI & UX)." />
+                <meta property="og:image" content="/images/favicon.png" />
             </Head>
             <div className={styles.container}>
                 <Header />
