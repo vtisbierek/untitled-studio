@@ -142,13 +142,13 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
   const [layout, setLayout] = useState("desktop");
  
   const router = useRouter();
-  const {category} = router.query;  
+  const {category} = router.query;
 
   useEffect(() => {
     function handleRowSize() {
       const screenWidth = window.innerWidth;
       const layoutType = screenWidth > 728 ? "desktop" : "mobile";
-
+  
       if(layoutType !== layout){
         setLayout(layoutType);
       }
@@ -163,18 +163,6 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
   }, [layout]);
 
   useEffect(() => {
-    async function handleLayout(){
-      if(layout === "desktop"){
-        setGallerySize({row: 3, page: 9});
-      } else {      
-        setGallerySize({row: 2, page: 8});
-      }
-    }
-    handleLayout();
-
-  }, [layout]);
-
-  useEffect(() => {
     if(!menuCategory){
       if(category){
         setMenuCategory(category as string);
@@ -185,24 +173,38 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
   }, [gallerySize]);
 
   useEffect(() => {
-    if(menuCategory === "all"){
-      const connectPrismic = async () => {
-        const portfolioAll = await getPortfolio(1, gallerySize.page);
-        setGalleryView(portfolioAll.content);
-        setCurrentPage(portfolioAll.page);
-        setCurrentTotalPages(portfolioAll.totalPages);
-      };
-      connectPrismic();
-    } else if(menuCategory){
-      const connectPrismic = async () => {
-        const portfolioByCategory = await getPortfolioByCategory(menuCategory, 1, gallerySize.page);
-        setGalleryView(portfolioByCategory.content);
-        setCurrentPage(portfolioByCategory.page);
-        setCurrentTotalPages(portfolioByCategory.totalPages);
-      };
-      connectPrismic();
+    async function handleLayout(){
+      const screenWidth = window.innerWidth;
+      if(screenWidth > 728){
+        setGallerySize({row: 3, page: 9});
+        return 9;
+      } else {   
+        setGallerySize({row: 2, page: 8});
+        return 8;
+      }
     }
-  }, [menuCategory, gallerySize]);
+    const promise = handleLayout();
+    promise.then(page => {
+      if(menuCategory === "all"){
+        const connectPrismic = async () => {
+          const portfolioAll = await getPortfolio(1, page);
+          setGalleryView(portfolioAll.content);
+          setCurrentPage(portfolioAll.page);
+          setCurrentTotalPages(portfolioAll.totalPages);
+        };
+        connectPrismic();
+      } else if(menuCategory){
+        const connectPrismic = async () => {
+          const portfolioByCategory = await getPortfolioByCategory(menuCategory, 1, page);
+          setGalleryView(portfolioByCategory.content);
+          setCurrentPage(portfolioByCategory.page);
+          setCurrentTotalPages(portfolioByCategory.totalPages);
+        };
+        connectPrismic();
+      }
+    });
+
+  }, [menuCategory, layout]);
   
   function getModal(modalState: boolean){
     setShowModal(modalState);
@@ -229,7 +231,7 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
       setCurrentPage(page);
     }
   }
-  
+
   const gallery = fixGallerySize(galleryView, generics, gallerySize.row);
   const renderBackdrop = (props: RenderModalBackdropProps) => <div className={styles.backdrop} {...props} />;
 
