@@ -121,7 +121,8 @@ export default function Home({content, portfolio, page, totalPages, generics}: C
 
   useEffect(() => {
     async function handleLayout(){
-      if(layout === "desktop"){
+      const screenWidth = window.innerWidth;
+      if(screenWidth > 728){
         setGallerySize({row: 3, page: 9});
         await getPortfolioByPage(1, 9, true);
       } else {      
