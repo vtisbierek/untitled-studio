@@ -4,9 +4,8 @@ import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
 import Headline from "@/components/Headline";
 import Category from "@/components/Category";
-import {useRouter} from "next/router";
 import { useState, useEffect } from "react";
-import { GetStaticProps } from 'next';
+import {GetServerSideProps} from "next";
 import {client} from "../../services/prismic";
 import * as prismicH from '@prismicio/helpers';
 import * as prismic from '@prismicio/client';
@@ -30,12 +29,13 @@ type Generics = {
   thumbnail: string;
   image: string;
 }
-  
+ 
 interface PortfolioProps{
   portfolio: Portfolio[];
   page: number;
   totalPages: number;
   generics: Generics;
+  menu: string;
 }
 
 async function getPortfolioByCategory(category: string, page: number, pageSize: number){
@@ -131,7 +131,7 @@ async function getPortfolio(page: number, pageSize: number){
   return portfolioData;
 }
 
-export default function Portfolio({portfolio, page, totalPages, generics}: PortfolioProps){
+export default function Portfolio({portfolio, page, totalPages, generics, menu: category}: PortfolioProps){
   const [menuCategory, setMenuCategory] = useState("");
   const [galleryView, setGalleryView] = useState(portfolio);
   const [showModal, setShowModal] = useState(false);
@@ -140,9 +140,6 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
   const [currentTotalPages, setCurrentTotalPages] = useState(totalPages);
   const [gallerySize, setGallerySize] = useState({row: 3, page: 9});
   const [layout, setLayout] = useState("desktop");
- 
-  const router = useRouter();
-  const {category} = router.query;
 
   useEffect(() => {
     function handleRowSize() {
@@ -165,7 +162,7 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
   useEffect(() => {
     if(!menuCategory){
       if(category){
-        setMenuCategory(category as string);
+        setMenuCategory(category);
       } else {
         setMenuCategory("all");
       }
@@ -283,7 +280,15 @@ export default function Portfolio({portfolio, page, totalPages, generics}: Portf
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({query}) => {
+  const {category} = query;
+  const validCategories = new Set(["card", "logo", "web", "printing", "retouching", "uiux"]);
+  let menu = category;
+  
+  if(!validCategories.has(menu as string)){
+    menu = "all";
+  }
+
   const response = await client.getByType("portfolio", {
     orderings: {
         field: 'document.last_publication_date',
@@ -331,7 +336,7 @@ export const getStaticProps: GetStaticProps = async () => {
       page: response.page,
       totalPages: response.total_pages,
       generics,
+      menu
     },
-    revalidate: 60 * 10, //essa página será gerada novamente a cada 10 minutos
   }
 }
