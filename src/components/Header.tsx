@@ -27,7 +27,7 @@ export default function Header(){
                     <Link href="/" title="HOME" className={styles.left}>
                         HOME
                     </Link>
-                    <Link href="/portfolio" title="PORTFOLIO" className={styles.right}>
+                    <Link href="/portfolio" as="/portfolio" title="PORTFOLIO" className={styles.right}>
                         PORTFOLIO
                     </Link>
                 </div>
