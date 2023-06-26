@@ -50,6 +50,23 @@
         font-family: 'Noto Sans KR', sans-serif;
         font-size: 1.25rem;
     }
+
+    a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 20%;
+    }
+
+    img{
+        transition: all 0.3s;
+    }
+
+    img:hover{
+        transform: scale(1.1);
+    }
 }
 
 .containerClosed{

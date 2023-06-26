@@ -82,31 +82,31 @@ export default function EmailPanel(){
                 <div className={styles.left}>
                     <div>
                         <form id="emailForm" onSubmit={handleSubmit}>
-                            <label>Name / 성함</label>
+                            <label>Name / 성함 <span>*</span></label>
                             <input
                                 type="text"
-                                placeholder="성함을 입력해주세요."
+                                placeholder="홍길동"
                                 className={styles.textEntry}
                                 value={custName}
                                 onChange={(e) => setCustName(e.target.value)}
                             />
-                            <label>Email / 이메일</label>
+                            <label>Email / 이메일 <span>*</span></label>
                             <input 
                                 type="email"
-                                placeholder="이메일을 입력해주세요."
+                                placeholder="untitled.studio.official@gmail.com"
                                 className={styles.textEntry}
                                 value={custEmail}
                                 onChange={(e) => setCustEmail(e.target.value)}
                             />
-                            <label>Phone / 전화</label>
+                            <label>Phone / 전화 <span>*</span></label>
                             <input 
                                 type="text"
-                                placeholder="전화를 입력해주세요."
+                                placeholder="010-1234-5678"
                                 className={styles.textEntry}
                                 value={custPhone}
                                 onChange={(e) => setCustPhone(e.target.value)}
                             />
-                            <label>Category / 상담 카테고리</label>
+                            <label>Category / 상담 카테고리 <span>*</span></label>
                             <select name="business" id="business" onChange={(e) => setCustBusiness(e.target.value)} value={custBusiness}>
                                 <option value="card">Business card 명함</option>
                                 <option value="logo">Logo 로고</option>
@@ -115,9 +115,9 @@ export default function EmailPanel(){
                                 <option value="web">Web contents 웹컨텐츠</option>
                                 <option value="uiux">UI & UX 웹 UI & UX</option>
                             </select>
-                            <label>Message / 상담내용</label>
+                            <label>Message / 상담내용 <span>*</span></label>
                             <textarea
-                                placeholder="상담내용을 적어주세요."
+                                placeholder="상담하고 싶은 내용을 적어주세요."
                                 className={styles.textEntry}
                                 value={custMessage}
                                 onChange={(e) => setCustMessage(e.target.value)}
