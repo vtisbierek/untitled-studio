@@ -10,6 +10,7 @@
     position: relative;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 
     img{
         width: 100%;
@@ -17,6 +18,7 @@
         max-height: 317px;
         height: auto;
         display: block;
+        transition: all 0.5s ease;
     }
 }
 
@@ -51,13 +53,17 @@
 .pictureBox .pictureText .tags{
     position: absolute;
     bottom: 20%;
-    left: 10%;
+    left: 5%;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 1.25rem;    
 }
 
 .pictureBox:hover .pictureText{
     visibility: visible;
+}
+
+.pictureBox:hover img{
+    transform: scale(1.1);
 }
 
 .modalButton{
